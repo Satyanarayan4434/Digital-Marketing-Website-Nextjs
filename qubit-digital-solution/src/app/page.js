@@ -1,7 +1,17 @@
+import Hero from "@/components/home/Hero";
+import ServiceHighlights from "@/components/home/service-highlights";
+import WhyChooseUs from "@/components/home/why-choose-us";
+import PricingPlans from "@/components/home/pricing-plans";
+import FeaturedImages from "@/components/home/featured-images";
+
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div className="flex flex-col gap-16">
+      <Hero />
+      <ServiceHighlights />
+      <WhyChooseUs />
+      <PricingPlans />
+      <FeaturedImages />
+    </div>
+  );
 }
