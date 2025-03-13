@@ -1,0 +1,24 @@
+**Take Design Inspration From -> https://invertase.io/
+
+//Use Font Size According to the above website//
+"Heading Text" -> https://fonts.google.com/share?selection.family=Roboto:ital,wght@0,100..900;1,100..900
+"Description and Button Text" -> https://fonts.google.com/share?selection.family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900
+
+
+////Use Colors According to the above website////
+ #b2b4bd;
+ #138639;
+ #757984;
+ #cf1763;
+ #f18252;
+ #138639;
+ #cf1763;
+ #138639;
+ #f18252;
+ #b2b4bd;
+ #040406;
+ #2b2b44
+ #464853
+ #5e616e
+
+ //There is Assets in the Public Folder scrapped from the website use accordingly in Your Design//
