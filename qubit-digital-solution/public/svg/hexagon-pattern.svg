@@ -1,0 +1,44 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.2">
+    <path d="M100 173.2L150 200V253.6L100 280L50 253.6V200L100 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M200 173.2L250 200V253.6L200 280L150 253.6V200L200 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M300 173.2L350 200V253.6L300 280L250 253.6V200L300 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M400 173.2L450 200V253.6L400 280L350 253.6V200L400 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M500 173.2L550 200V253.6L500 280L450 253.6V200L500 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M600 173.2L650 200V253.6L600 280L550 253.6V200L600 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M700 173.2L750 200V253.6L700 280L650 253.6V200L700 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M800 173.2L850 200V253.6L800 280L750 253.6V200L800 173.2Z" stroke="white" stroke-width="2"/>
+    <path d="M900 173.2L950 200V253.6L900 280L850 253.6V200L900 173.2Z" stroke="white" stroke-width="2"/>
+    
+    <path d="M150 280L200 306.8V360.4L150 386.8L100 360.4V306.8L150 280Z" stroke="white" stroke-width="2"/>
+    <path d="M250 280L300 306.8V360.4L250 386.8L200 360.4V306.8L250 280Z" stroke="white" stroke-width="2"/>
+    <path d="M350 280L400 306.8V360.4L350 386.8L300 360.4V306.8L350 280Z" stroke="white" stroke-width="2"/>
+    <path d="M450 280L500 306.8V360.4L450 386.8L400 360.4V306.8L450 280Z" stroke="white" stroke-width="2"/>
+    <path d="M550 280L600 306.8V360.4L550 386.8L500 360.4V306.8L550 280Z" stroke="white" stroke-width="2"/>
+    <path d="M650 280L700 306.8V360.4L650 386.8L600 360.4V306.8L650 280Z" stroke="white" stroke-width="2"/>
+    <path d="M750 280L800 306.8V360.4L750 386.8L700 360.4V306.8L750 280Z" stroke="white" stroke-width="2"/>
+    <path d="M850 280L900 306.8V360.4L850 386.8L800 360.4V306.8L850 280Z" stroke="white" stroke-width="2"/>
+    <path d="M950 280L1000 306.8V360.4L950 386.8L900 360.4V306.8L950 280Z" stroke="white" stroke-width="2"/>
+    
+    <path d="M100 386.8L150 413.6V467.2L100 493.6L50 467.2V413.6L100 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M200 386.8L250 413.6V467.2L200 493.6L150 467.2V413.6L200 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M300 386.8L350 413.6V467.2L300 493.6L250 467.2V413.6L300 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M400 386.8L450 413.6V467.2L400 493.6L350 467.2V413.6L400 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M500 386.8L550 413.6V467.2L500 493.6L450 467.2V413.6L500 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M600 386.8L650 413.6V467.2L600 493.6L550 467.2V413.6L600 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M700 386.8L750 413.6V467.2L700 493.6L650 467.2V413.6L700 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M800 386.8L850 413.6V467.2L800 493.6L750 467.2V413.6L800 386.8Z" stroke="white" stroke-width="2"/>
+    <path d="M900 386.8L950 413.6V467.2L900 493.6L850 467.2V413.6L900 386.8Z" stroke="white" stroke-width="2"/>
+    
+    <path d="M150 493.6L200 520.4V574L150 600.4L100 574V520.4L150 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M250 493.6L300 520.4V574L250 600.4L200 574V520.4L250 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M350 493.6L400 520.4V574L350 600.4L300 574V520.4L350 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M450 493.6L500 520.4V574L450 600.4L400 574V520.4L450 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M550 493.6L600 520.4V574L550 600.4L500 574V520.4L550 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M650 493.6L700 520.4V574L650 600.4L600 574V520.4L650 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M750 493.6L800 520.4V574L750 600.4L700 574V520.4L750 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M850 493.6L900 520.4V574L850 600.4L800 574V520.4L850 493.6Z" stroke="white" stroke-width="2"/>
+    <path d="M950 493.6L1000 520.4V574L950 600.4L900 574V520.4L950 493.6Z" stroke="white" stroke-width="2"/>
+  </g>
+</svg>
+

@@ -1,3 +1,4 @@
+@import url("https://fonts.google.com/share?selection.family=Roboto:ital,wght@0,100..900;1,100..900");
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -46,6 +47,7 @@
 }
 
 :root {
+  --font-roboto: "Roboto", sans-serif;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);

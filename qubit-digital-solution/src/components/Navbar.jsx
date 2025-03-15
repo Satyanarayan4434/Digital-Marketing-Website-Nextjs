@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { UserButton, SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
@@ -11,19 +11,57 @@ import Image from "next/image";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Services", href: "/services" },
+  { name: "Services", href: "/services", hasDropdown: true },
   { name: "Blog", href: "/blog" },
   { name: "Contact Us", href: "/contact" },
+];
+
+const serviceItems = [
+  {
+    title: "Brand Strategy Agency",
+    description: "Strategic branding solutions for your business",
+    href: "/services/brand-strategy",
+  },
+  {
+    title: "Creative Designing Agency",
+    description: "Innovative design solutions that stand out",
+    href: "/services/creative-design",
+  },
+  {
+    title: "Digital Marketing Services",
+    description: "Comprehensive digital marketing strategies",
+    href: "/services/digital-marketing",
+  },
+  {
+    title: "Web Development Services",
+    description: "Custom web solutions for your needs",
+    href: "/services/web-development",
+  },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isSignedIn, user } = useUser();
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef(null);
 
   const isAdmin = user?.publicMetadata?.role === "admin";
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (servicesRef.current && !servicesRef.current.contains(event.target)) {
+        setServicesOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [servicesRef]);
+
   return (
-    <header className="shadow-sm">
+    <header className="bg-black shadow-sm backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
       <nav
         className="mx-auto flex  items-center justify-between p-4 lg:px-8 bg-[#040406] text-[#b2b4bd]"
         aria-label="Global"
@@ -31,6 +69,7 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <Image src="/Qubit-Digital-Solution-Logo.svg" alt="Qubit Digital Solution" width={200} height={200}/>
+            <span className="text-xl font-bold text-white">PromotEdge</span>
           </Link>
         </div>
 
@@ -55,6 +94,56 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+          {navLinks.map((link) =>
+            link.hasDropdown ? (
+              <div key={link.name} className="relative" ref={servicesRef}>
+                <button
+                  className="flex items-center text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  onMouseEnter={() => setServicesOpen(true)}
+                >
+                  {link.name}
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+
+                {/* Services dropdown */}
+                {servicesOpen && (
+                  <div
+                    className="absolute left-0 mt-2 w-[400px] rounded-md bg-gray-900/95 backdrop-blur-md shadow-lg ring-1 ring-gray-800 focus:outline-none z-50"
+                    onMouseLeave={() => setServicesOpen(false)}
+                  >
+                    <div className="p-3">
+                      <div className="grid gap-2">
+                        {serviceItems.map((item) => (
+                          <Link
+                            key={item.title}
+                            href={item.href}
+                            className="block p-3 hover:bg-gray-800 rounded-md group"
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            <div className="text-sm font-medium text-white mb-1">
+                              {item.title}
+                            </div>
+                            <div className="text-sm text-gray-400 group-hover:text-gray-300">
+                              {item.description}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+              >
+                {link.name}
+              </Link>
+            )
+          )}
           {isAdmin && (
             <Link
               href="/admin"

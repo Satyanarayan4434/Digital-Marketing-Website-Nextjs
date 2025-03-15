@@ -1,128 +1,157 @@
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
+import { Github, Youtube, Linkedin } from "lucide-react";
+import { FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div>
-            <h2 className="text-2xl font-bold">Qubit Digital Solution</h2>
-            <p className="mt-4 text-sm text-gray-300">
-              Your partner for digital marketing success. We help businesses
-              grow their online presence and reach their target audience.
-            </p>
-            <div className="mt-6 flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
+    <footer className="bg-black text-white border-t border-gray-800 py-5">
+      <div className="container w-11/12 mx-auto px-4">
+        <div className="flex justify-between">
+          <div className="mb-8 md:mb-12">
+            <Link href="/" className="block md:mb-8">
+              <span>Quibit Digital Solotion</span>
+            </Link>
+
+            <div className="flex gap-6 mt-6 pt-16 ">
+              <Link
+                href="#"
+                aria-label="Twitter"
+                className="text-white hover:text-gray-300"
+              >
+                <FaXTwitter size={20} />
+              </Link>
+              <Link
+                href="#"
+                aria-label="Discord"
+                className="text-white hover:text-gray-300"
+              >
+                <FaDiscord size={20} />
+              </Link>
+              <Link
+                href="#"
+                aria-label="YouTube"
+                className="text-white hover:text-gray-300"
+              >
+                <Youtube size={20} />
+              </Link>
+              <Link
+                href="#"
+                aria-label="GitHub"
+                className="text-white hover:text-gray-300"
+              >
+                <Github size={20} />
+              </Link>
+              <Link
+                href="#"
+                aria-label="LinkedIn"
+                className="text-white hover:text-gray-300"
+              >
+                <Linkedin size={20} />
+              </Link>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider">
-              Services
-            </h3>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Link
-                  href="/services/brand-strategy"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Brand Strategy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/creative-designing"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Creative Designing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/web-solutions"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Web Solutions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/digital-marketing"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Digital Marketing
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-12 text-[14px]">
+            <div className="">
+              <h3 className="text-white font-medium text-base mb-4 md:mb-6">
+                Services
+              </h3>
+              <ul className="space-y-3 md:space-y-4 text-gray-400">
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    SDK development
+                    <br />& maintenance
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Cross-platform
+                    <br />
+                    development
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider">
-              Company
-            </h3>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-300 hover:text-white">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <div className="">
+              <h3 className="text-white font-medium text-base mb-4 md:mb-6">
+                Products
+              </h3>
+              <ul className="space-y-3 md:space-y-4 text-gray-400">
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Globe.dev
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Zapp.run
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Docs.page
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider">
-              Contact
-            </h3>
-            <ul className="mt-4 space-y-2 text-gray-300">
-              <li>123 Marketing Street</li>
-              <li>New York, NY 10001</li>
-              <li>info@Qubit Digital Solution.com</li>
-              <li>+1 (555) 123-4567</li>
-            </ul>
+            <div className="">
+              <h3 className="text-white font-medium text-base mb-4 md:mb-6">
+                Resources
+              </h3>
+              <ul className="space-y-3 md:space-y-4 text-gray-400">
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Open source
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="">
+              <h3 className="text-white font-medium text-base mb-4 md:mb-6">
+                Company
+              </h3>
+              <ul className="space-y-3 md:space-y-4 text-gray-400">
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    About us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-white">
+                    Careers
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-800 pt-8">
-          <p className="text-center text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Qubit Digital Solution. All rights reserved.
-          </p>
+        <div className=" pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
+          <div className="text-base text-gray-500 sm:mb-0 text-center sm:text-left">
+            Copyright © 2025 Invertase Limited. All rights reserved.
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-base text-gray-500 text-center sm:text-left">
+            <Link href="#" className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:text-white">
+              Cookie Policy
+            </Link>
+            <Link href="#" className="hover:text-white">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
