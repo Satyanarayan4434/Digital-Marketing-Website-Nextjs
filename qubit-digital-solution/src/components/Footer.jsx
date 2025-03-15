@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
-            <h2 className="text-2xl font-bold">PromotEdge</h2>
+            <h2 className="text-2xl font-bold">Qubit Digital Solution</h2>
             <p className="mt-4 text-sm text-gray-300">
               Your partner for digital marketing success. We help businesses
               grow their online presence and reach their target audience.
@@ -113,7 +113,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-gray-300">
               <li>123 Marketing Street</li>
               <li>New York, NY 10001</li>
-              <li>info@promotedge.com</li>
+              <li>info@Qubit Digital Solution.com</li>
               <li>+1 (555) 123-4567</li>
             </ul>
           </div>
@@ -121,7 +121,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-gray-800 pt-8">
           <p className="text-center text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} PromotEdge. All rights reserved.
+            &copy; {new Date().getFullYear()} Qubit Digital Solution. All rights reserved.
           </p>
         </div>
       </div>

@@ -6,6 +6,8 @@ import { UserButton, SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import Image from "next/image";
+
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
@@ -21,21 +23,21 @@ export default function Navbar() {
   const isAdmin = user?.publicMetadata?.role === "admin";
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="shadow-sm">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
+        className="mx-auto flex  items-center justify-between p-4 lg:px-8 bg-[#040406] text-[#b2b4bd]"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-bold text-primary">PromotEdge</span>
+            <Image src="/Qubit-Digital-Solution-Logo.svg" alt="Qubit Digital Solution" width={200} height={200}/>
           </Link>
         </div>
 
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[#b2b4bd]"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -48,7 +50,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-semibold  leading-6 text-gray-900 hover:text-primary"
+              className="text-sm font-semibold  leading-6 text-[#b2b4bd] hover:text-primary"
             >
               {link.name}
             </Link>
@@ -69,12 +71,12 @@ export default function Navbar() {
           ) : (
             <>
               <SignInButton mode="modal">
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost"  size="lg">
                   Sign In
                 </Button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <Button size="sm">Sign Up</Button>
+                <Button size="lg" variant="default">Sign Up</Button>
               </SignUpButton>
             </>
           )}
@@ -89,7 +91,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between px-4">
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="text-xl font-bold text-primary">
-                    PromotEdge
+                    Qubit Digital Solution
                   </span>
                 </Link>
                 <button

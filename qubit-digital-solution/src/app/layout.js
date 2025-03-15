@@ -7,7 +7,7 @@ import Footer from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "PromotEdge - Digital Marketing Platform",
+  title: "Qubit Digital Solution - Digital Marketing Platform",
   description: "Your partner for digital marketing success",
 };
 

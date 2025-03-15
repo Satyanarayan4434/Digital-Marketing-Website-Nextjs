@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: "About Us - PromotEdge",
+  title: "About Us - Qubit Digital Solution",
   description: "Learn about our company, mission, and team",
 };
 
@@ -12,7 +12,7 @@ export default function AboutPage() {
         {/* Hero section */}
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            About PromotEdge
+            About Qubit Digital Solution
           </h1>
           <div className="mt-6 flex flex-col gap-x-8 gap-y-12 lg:flex-row">
             <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
@@ -23,7 +23,7 @@ export default function AboutPage() {
               </p>
               <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
                 <p>
-                  Founded in 2015, PromotEdge has been at the forefront of
+                  Founded in 2015, Qubit Digital Solution has been at the forefront of
                   digital marketing innovation, helping businesses of all sizes
                   navigate the ever-changing digital landscape. Our approach
                   combines creativity, data-driven insights, and strategic
@@ -89,7 +89,7 @@ export default function AboutPage() {
                 Our Team
               </h2>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Meet the talented individuals who make PromotEdge a success. Our
+                Meet the talented individuals who make Qubit Digital Solution a success. Our
                 diverse team brings together expertise from various backgrounds
                 to deliver comprehensive digital marketing solutions.
               </p>

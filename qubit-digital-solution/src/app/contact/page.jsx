@@ -121,9 +121,9 @@ export default function ContactPage() {
                 <dd>
                   <a
                     className="hover:text-gray-900"
-                    href="mailto:info@promotedge.com"
+                    href="mailto:info@Qubit Digital Solution.com"
                   >
-                    info@promotedge.com
+                    info@Qubit Digital Solution.com
                   </a>
                 </dd>
               </div>

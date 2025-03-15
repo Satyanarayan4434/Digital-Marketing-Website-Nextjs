@@ -3,7 +3,7 @@ import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 
 export const metadata = {
-  title: "Blog - PromotEdge",
+  title: "Blog - Qubit Digital Solution",
   description:
     "Read our latest articles on digital marketing trends and strategies",
 };

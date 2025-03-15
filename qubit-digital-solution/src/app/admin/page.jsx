@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import AdminDashboard from "@/components/admin/Dashboard";
 
 export const metadata = {
-  title: "Admin Dashboard - PromotEdge",
+  title: "Admin Dashboard - Qubit Digital Solution",
   description: "Manage your digital marketing platform",
 };
 

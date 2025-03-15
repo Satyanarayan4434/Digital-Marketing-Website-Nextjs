@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Palette, BarChart3, Globe, Lightbulb, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Services - PromotEdge",
+  title: "Services - Qubit Digital Solution",
   description: "Explore our comprehensive digital marketing services",
 };
 
