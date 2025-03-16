@@ -6,7 +6,7 @@ import PricingPlans from "@/components/home/pricing-plans";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16 bg-[#040406]">
+    <div className="flex flex-col">
       <Hero />
       <ServiceHighlights />
       <WhyChooseUs />
