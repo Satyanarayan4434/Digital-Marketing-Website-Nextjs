@@ -25,7 +25,7 @@ const serviceItems = [
   {
     title: "Creative Designing Agency",
     description: "Innovative design solutions that stand out",
-    href: "/services/creative-design",
+    href: "/services/creative-designing",
   },
   {
     title: "Digital Marketing Services",
