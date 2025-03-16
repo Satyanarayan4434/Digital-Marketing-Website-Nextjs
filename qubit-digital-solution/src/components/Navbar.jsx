@@ -69,7 +69,6 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <Image src="/Qubit-Digital-Solution-Logo.svg" alt="Qubit Digital Solution" width={200} height={200}/>
-            <span className="text-xl font-bold text-white">PromotEdge</span>
           </Link>
         </div>
 
@@ -85,15 +84,6 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex lg:gap-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-sm font-semibold  leading-6 text-[#b2b4bd] hover:text-primary"
-            >
-              {link.name}
-            </Link>
-          ))}
           {navLinks.map((link) =>
             link.hasDropdown ? (
               <div key={link.name} className="relative" ref={servicesRef}>
