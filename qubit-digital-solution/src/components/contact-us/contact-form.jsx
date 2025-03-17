@@ -191,9 +191,6 @@ export default function ContactForm() {
 
         <div className="relative w-full md:w-auto">
           <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
-          {/* <div className="absolute z-1 top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#f18252] w-4 h-4 rounded-full"></div> */}
-
-          {/* Button itself */}
           <button
             type="submit"
             disabled={formState.isSubmitting}

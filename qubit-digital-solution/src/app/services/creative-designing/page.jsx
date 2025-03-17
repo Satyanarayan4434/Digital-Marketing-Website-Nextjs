@@ -4,15 +4,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Palette, Image, Layout, Film, PenTool, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import QueryModal from "@/components/query-modal";
+import QueryModal from "@/components/services/query-modal";
 import {
   BorderBeam,
   MagicCard,
   DotPattern,
   IconCloud,
   TestimonialCard,
-} from "@/components/ui-elements";
-import PricingSection from "@/components/pricing-section";
+} from "@/components/services/ui-elements";
+import PricingSection from "@/components/services/pricing";
 
 export default function CreativeDesigningPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,37 +29,61 @@ export default function CreativeDesigningPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#EFEFF0] text-white">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <DotPattern />
-        <div className="container mx-auto px-4">
+      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black pb-28">
+        <div className="container flex flex-col max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
+            className=""
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-10">
               Creative Designing Agency
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              We transform ideas into visually stunning designs that captivate
-              your audience and elevate your brand.
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
-            >
-              Get a Free Design Consultation
-            </Button>
+            <div className="flex flex-wrap gap-8 ">
+              <img
+                src="/services/Design.webp"
+                alt="Web Development"
+                className="w-[49%] rounded-lg"
+              />
+
+              <div className="flex flex-col justify-center items-center gap-4 w-[45%] text-gray-300">
+                <p>
+                  Our design and communication teams are adept at transforming
+                  your requirements into reality. Be it crafting a brand
+                  identity, packaging, translating your positioning into
+                  effective communication tools, making a corporate tool, or the
+                  perfect presentation, point of sale designs or print ads, our
+                  team is here for all your communication requirements. At
+                  PromotEdge, a leading creative agency, we use the best of our
+                  talent to create thought-provoking creatives that positively
+                  impact our client’s business. We derive our communications
+                  from insights and data-backed research, ensuring memorable
+                  visual elements that stand out amidst the clutter and leave a
+                  lasting impact.
+                </p>
+                <p>
+                  We have a collaborative approach where we put our team with
+                  the clients to understand the vision, mood board, and goal and
+                  then execute and deliver not only captive but also tangible
+                  results. As a creative agency, we derive our communications
+                  from insights and data-backed research, ensuring memorable
+                  visual elements that stand out amidst the clutter and leave a
+                  lasting impact. Embracing the art of simplicity, our goal is
+                  to deliver impactful communication assets through a
+                  straightforward approach in every creation.
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-blue-950/20">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Creative Design Services
@@ -160,57 +184,9 @@ export default function CreativeDesigningPage() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Creative Portfolio
-            </h2>
-            <p className="text-gray-300">
-              A showcase of our recent design work across various industries and
-              mediums.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: item * 0.1 }}
-                viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-lg"
-              >
-                <div className="aspect-square bg-blue-900/20 overflow-hidden">
-                  <img
-                    src={`/placeholder.svg?height=400&width=400&text=Project+${item}`}
-                    alt={`Design Project ${item}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <h3 className="text-xl font-bold text-white">
-                    Project Title {item}
-                  </h3>
-                  <p className="text-gray-300">Brand Identity, UI/UX Design</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button className="bg-blue-950/50 text-white border border-blue-900/50 hover:bg-blue-900/30">
-              View Full Portfolio
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Process Section */}
-      <section className="py-20 bg-blue-950/20">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Creative Process
@@ -278,7 +254,7 @@ export default function CreativeDesigningPage() {
       </section>
 
       {/* Tools Section */}
-      <section className="py-20">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -291,44 +267,6 @@ export default function CreativeDesigningPage() {
           </div>
 
           <IconCloud icons={icons} />
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-blue-950/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Client Testimonials
-            </h2>
-            <p className="text-gray-300">
-              Hear what our clients have to say about our creative design
-              services.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TestimonialCard
-              quote="Their design team took our vague ideas and transformed them into a stunning visual identity that perfectly captures our brand essence."
-              author="David Rodriguez"
-              position="CEO"
-              company="Nexus Innovations"
-            />
-
-            <TestimonialCard
-              quote="The UI/UX design they created for our app resulted in a 40% increase in user engagement and a significant reduction in bounce rates."
-              author="Emily Chang"
-              position="Product Manager"
-              company="TechFlow"
-            />
-
-            <TestimonialCard
-              quote="Their packaging design completely transformed our product's shelf presence. Sales increased by 35% within the first quarter after the redesign."
-              author="Robert Miller"
-              position="Marketing Director"
-              company="Natural Goods Co."
-            />
-          </div>
         </div>
       </section>
 
@@ -382,22 +320,47 @@ export default function CreativeDesigningPage() {
       />
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-950/40 to-black">
+      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-4"
+            >
               Ready to Elevate Your Brand's Visual Identity?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-lg text-gray-300 mb-14"
+            >
               Let's create designs that captivate your audience and drive
               business results.
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
+            </motion.p>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
             >
-              Schedule a Design Consultation
-            </Button>
+              <div className="relative w-full md:w-auto">
+                <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  type="submit"
+                  className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
+                >
+                  Schedule a Design Consultation
+                </button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

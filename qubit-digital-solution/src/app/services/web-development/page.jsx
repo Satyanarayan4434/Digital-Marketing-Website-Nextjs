@@ -10,13 +10,7 @@ import {
   Server,
   ShieldCheck,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import QueryModal from "@/components/services/query-modal";
-import {
-  BorderBeam,
-  MagicCard,
-  TestimonialCard,
-} from "@/components/services/ui-elements";
 import PricingSection from "@/components/services/pricing";
 import { IconCloud } from "@/components/magicui/icon-cloud";
 import { DotPattern } from "@/components/magicui/dot-pattern";
@@ -239,114 +233,16 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      {/* <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Technologies We Use
-            </h2>
-            <p className="text-gray-300">
-              We leverage the latest technologies and frameworks to build
-              high-performance web solutions.
-            </p>
-          </div>
-
-          <IconCloud icons={icons} className="mb-12" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <MagicCard>
-              <h3 className="text-xl font-bold mb-4">Frontend Technologies</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>React.js</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>Next.js</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>Vue.js</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>Angular</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>Tailwind CSS</span>
-                </li>
-              </ul>
-            </MagicCard>
-
-            <MagicCard>
-              <h3 className="text-xl font-bold mb-4">Backend Technologies</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                  <span>Node.js</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                  <span>Express.js</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                  <span>Python/Django</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                  <span>PHP/Laravel</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                  <span>Ruby on Rails</span>
-                </li>
-              </ul>
-            </MagicCard>
-
-            <MagicCard>
-              <h3 className="text-xl font-bold mb-4">
-                Database & Infrastructure
-              </h3>
-              <ul className="space-y-2">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>MongoDB</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>PostgreSQL</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>MySQL</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>AWS</span>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                  <span>Firebase</span>
-                </li>
-              </ul>
-            </MagicCard>
-          </div>
-        </div>
-      </section> */}
-
-
       {/* Pricing Section */}
       <PricingSection
-        title="Web Development Packages"
-        description="Flexible options to meet your web development needs and budget."
-        bgWhite={false}
+        title="Pricing"
+        description="Choose the perfect plan for your needs"
+        bgWhite={true}
         packages={[
           {
             title: "Basic Website",
+            description:
+              "Perfect for small businesses needing a professional online presence.",
             price: "2,999",
             features: [
               "5-7 Pages",
@@ -360,6 +256,8 @@ export default function WebDevelopmentPage() {
           },
           {
             title: "Business Website",
+            description:
+              "Ideal for growing businesses requiring advanced functionality.",
             price: "5,999",
             features: [
               "10-15 Pages",
@@ -374,6 +272,8 @@ export default function WebDevelopmentPage() {
           },
           {
             title: "Custom Web Application",
+            description:
+              "Tailored for businesses needing specialized web solutions.",
             price: "Custom",
             features: [
               "Custom Functionality",
@@ -390,22 +290,27 @@ export default function WebDevelopmentPage() {
       />
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-950/40 to-black">
+      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Build Your Next Web Project?
             </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-lg text-gray-300 mb-14">
               Let's create a web solution that drives growth and delivers
               exceptional user experience.
             </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
-            >
-              Schedule a Consultation
-            </Button>
+
+            <div className="relative w-full md:w-auto">
+              <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                type="submit"
+                className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
+              >
+                Schedule a Consultation
+              </button>
+            </div>
           </div>
         </div>
       </section>

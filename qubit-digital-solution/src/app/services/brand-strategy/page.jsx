@@ -35,48 +35,50 @@ export default function BrandStrategyPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#EFEFF0] text-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <DotPattern />
-        <div
-          className={`absolute inset-0 bg-gradient-to-b from-blue-950/30 to-black transition-opacity duration-1000 ${
-            animateBackground ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <motion.div
-          style={{ opacity, scale }}
-          className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20 transform -skew-y-6"
-        />
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-              Brand Strategy Agency
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              We craft compelling brand narratives that resonate with your
-              audience and drive business growth.
-            </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
-              >
-                Get a Free Brand Audit
-              </Button>
-            </motion.div>
-          </motion.div>
+      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black pb-28">
+        <div className="flex flex-col max-w-7xl mx-auto">
+          <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-10">
+            Brand Strategy Agency
+          </h1>
+          <div className="flex flex-wrap gap-8 ">
+            <img
+              src="/assets/Brand.jpg"
+              alt="Web Development"
+              className="w-[45%] rounded-lg"
+            />
+
+            <div className="flex flex-col justify-center items-center gap-4 w-1/2 text-gray-300 leading-loose">
+              <p>
+                Crafting a strong brand strategy is the first step toward
+                building a lasting identity in any market. Whether you’re an
+                established business expanding into new territories or a startup
+                defining its presence, a well-structured approach ensures
+                clarity and direction. A strategic foundation paves the way for
+                impactful marketing and communication, covering everything from
+                brand positioning and identity development to architecture,
+                tactical planning, and media execution. With the right strategy
+                in place, your brand can stand out, connect with the right
+                audience, and drive long-term success.
+              </p>
+              <p>
+                A seamless and well-executed brand strategy ensures consistency
+                across all touchpoints, creating a compelling narrative that
+                resonates with your audience. Whether launching a new brand or
+                revitalizing an existing one, having a dedicated team to plan,
+                build, and manage branding efforts makes all the difference.
+                Ready to elevate your brand? Explore a range of tailored
+                services designed to bring your vision to life.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-950/20 to-black">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -163,7 +165,7 @@ export default function BrandStrategyPage() {
       {/* Process Section */}
       <section className="py-20 bg-white text-black">
         <DotPattern className="opacity-10" />
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -301,7 +303,7 @@ export default function BrandStrategyPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-blue-950/40">
+      <section className="py-28 relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full">
         <DotPattern />
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -402,8 +404,7 @@ export default function BrandStrategyPage() {
       />
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-950/40 to-black">
-        <DotPattern />
+      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <motion.h2
@@ -420,7 +421,7 @@ export default function BrandStrategyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-xl text-gray-300 mb-8"
+              className="text-lg text-gray-300 mb-14"
             >
               Let's create a brand strategy that drives growth and builds
               lasting connections with your audience.
@@ -433,12 +434,16 @@ export default function BrandStrategyPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Button
-                onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
-              >
-                Schedule a Strategy Call
-              </Button>
+              <div className="relative w-full md:w-auto">
+                <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  type="submit"
+                  className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
+                >
+                  Schedule a Strategy Call
+                </button>
+              </div>
             </motion.div>
           </div>
         </div>
