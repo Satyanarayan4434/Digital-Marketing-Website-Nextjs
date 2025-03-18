@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import RotatingCanvas from "@/components/RotatingShape";
 import { IoIosArrowForward } from "react-icons/io";
@@ -86,7 +85,7 @@ export default function Hero() {
       </div>
 
       {/* Services Section */}
-      <div className="flex flex-col gap-5 px-[4rem]">
+      <div className="flex flex-col gap-5 px-[5rem]">
           <div className="text-[#f8f8fa] text-5xl font-bold">Our services</div>
           <div className="flex justify-between items-center gap-3">
             <div className="flex flex-col gap-2">
