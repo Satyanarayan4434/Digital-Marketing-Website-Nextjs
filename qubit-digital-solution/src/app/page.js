@@ -3,7 +3,6 @@ import ServiceHighlights from "@/components/home/service-highlights";
 import WhyChooseUs from "@/components/home/why-choose-us";
 import PricingPlans from "@/components/home/PricingSection";
 
-
 export default function Home() {
   return (
     <div className="flex flex-col">

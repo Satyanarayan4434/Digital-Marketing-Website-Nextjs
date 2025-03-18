@@ -15,11 +15,14 @@ import QueryModal from "@/components/services/query-modal";
 import {
   BorderBeam,
   MagicCard,
-  DotPattern,
   IconCloud,
   TestimonialCard,
 } from "@/components/services/ui-elements";
 import PricingSection from "@/components/services/pricing";
+import { DotPattern } from "@/components/magicui/dot-pattern";
+import { cn } from "@/lib/utils";
+import CountUp from "@/components/services/countUp";
+import FAQSection from "@/components/services/faq-section";
 
 export default function DigitalMarketingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,39 +37,62 @@ export default function DigitalMarketingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <DotPattern />
-        <div className="container mx-auto px-4">
+      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black pb-28">
+        <div className="container flex flex-col max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
+            className=""
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-10">
               Digital Marketing Services
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Data-driven strategies that increase your online visibility, drive
-              qualified traffic, and convert visitors into customers.
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
-            >
-              Get a Free Marketing Audit
-            </Button>
+            <div className="flex flex-wrap gap-8 ">
+              <img
+                src="/services/Digital.jpg"
+                alt="Web Development"
+                className="w-[49%] rounded-lg"
+              />
+
+              <div className="flex flex-col justify-center items-center gap-4 w-[45%] text-gray-300">
+                <p>
+                  Marketing virtually to grow an online presence and gain
+                  recognition is what digital marketing thrives to do. As a
+                  spearheading digital marketing agency, PromotEdge is here to
+                  assist you. We understand your brand and analyse your customer
+                  base to create sound communication that leads to potential
+                  conversion
+                </p>
+                <p>
+                  Digital marketing is about strategizing and implementing
+                  campaigns that will help you create an audience. We at
+                  PromotEdge use numerous digital tools to connect with your
+                  potential customers. As an agency, we design communication
+                  systems that help you reach out to your customers and make
+                  them buy what you sell.
+                </p>
+                <p>
+                  Such processes revolve around search engine optimization,
+                  social media marketing, email marketing, SMS, mobile app
+                  development, etc. We understand the targets you want to
+                  achieve and use free (SMO, SEO) and paid channels (SMM, SEM).
+                  Such tools assist us in creating an effective digital
+                  marketing strategy to support your goals.
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="py-20 bg-blue-950/20">
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl  font-bold mb-4">
               Our Digital Marketing Services
             </h2>
             <p className="text-gray-300">
@@ -100,8 +126,8 @@ export default function DigitalMarketingPage() {
                   Pay-Per-Click Advertising
                 </h3>
                 <p className="text-gray-300">
-                  Create targeted ad campaigns that deliver immediate results
-                  and maximize your ROI.
+                  Create targeted ad campaigns that will deliver immediate
+                  results and this will maximize your ROI.
                 </p>
               </div>
             </BorderBeam>
@@ -142,7 +168,7 @@ export default function DigitalMarketingPage() {
                 <h3 className="text-xl font-bold mb-2">
                   Analytics & Reporting
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-300 pb-6">
                   Gain valuable insights into your marketing performance and
                   make data-driven decisions.
                 </p>
@@ -155,7 +181,7 @@ export default function DigitalMarketingPage() {
                   <Megaphone size={32} className="text-purple-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Content Marketing</h3>
-                <p className="text-gray-300">
+                <p className="text-gray-300 pb-6">
                   Create valuable content that attracts, engages, and converts
                   your target audience.
                 </p>
@@ -165,14 +191,166 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
+      {/* Our Approach and Working Process Section */}
+      <section className="py-20 relative bg-white text-black">
+        <div className="absolute inset-0">
+          <DotPattern
+            className={cn(
+              "opacity-100",
+              "[mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
+            )}
+          />
+        </div>
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-6"
+            >
+              Our Approach and Working Process
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-gray-600 text-md"
+            >
+              We define objectives, understand user journeys, align with
+              business goals, and shape communication. Our team creates resonant
+              brand content, selecting platforms and voices, followed by
+              campaigns optimized for effective digital outreach.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 relative">
+            {/* Step 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="flex items-center"></div>
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-4">
+                  <div className="w-3 h-3 rounded-full bg-blue-600 z-10 -ml-1 -mt-2"></div>
+                  <div className="w-0.5 h-5 bg-blue-600  mb-3"></div>
+                </div>
+                <h3 className="text-6xl font-bold text-gray-300 mb-4 tracking-wide">
+                  One
+                </h3>
+              </div>
+              <h4 className="text-2xl font-bold mb-3">Objective Defining</h4>
+              <p className="text-gray-600">
+                Grasping the pulse of digital marketing and integrated services
+                is done by object-defining. Just getting visitors is not enough
+                to get the business, we understand products, services, and user
+                journeys to define the objective.
+              </p>
+            </motion.div>
+
+            {/* Step 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="flex items-center"></div>
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-4">
+                  <div className="w-3 h-3 rounded-full bg-blue-600 z-10 -ml-1 -mt-2"></div>
+                  <div className="w-0.5 h-5 bg-blue-600  mb-3"></div>
+                </div>
+                <h3 className="text-6xl font-bold text-gray-300 mb-4 tracking-wide">
+                  Two
+                </h3>
+              </div>
+              <h4 className="text-2xl font-bold mb-3">
+                Exploring, and analysing
+              </h4>
+              <p className="text-gray-600">
+                To build a target segment, it is important to know what they are
+                looking for. Our brand strategists and data analysts investigate
+                competitors' activity, understand business goals, and determine
+                decision-making sections to understand your target group.
+              </p>
+            </motion.div>
+
+            {/* Step 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="flex items-center"></div>
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-4">
+                  <div className="w-3 h-3 rounded-full bg-blue-600 z-10 -ml-1 -mt-2"></div>
+                  <div className="w-0.5 h-5 bg-blue-600  mb-3"></div>
+                </div>
+                <h3 className="text-6xl font-bold text-gray-300 mb-4 tracking-wide">
+                  Three
+                </h3>
+              </div>
+              <h4 className="text-2xl font-bold mb-3">
+                Reshaping our communication
+              </h4>
+              <p className="text-gray-600">
+                Our writers and graphic designers ideate and create brand
+                communication that strikes a chord! Every brand has a different
+                story to tell, and we choose the right platform, and brand voice
+                that connects audiences and makes your brand sell.
+              </p>
+            </motion.div>
+
+            {/* Step 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="flex items-center"></div>
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-4">
+                  <div className="w-3 h-3 rounded-full bg-blue-600 z-10 -ml-1 -mt-2"></div>
+                  <div className="w-0.5 h-5 bg-blue-600  mb-3"></div>
+                </div>
+                <h3 className="text-6xl font-bold text-gray-300 mb-4 tracking-wide">
+                  Four
+                </h3>
+              </div>
+
+              <h4 className="text-2xl font-bold mb-3">Creating campaigns</h4>
+              <p className="text-gray-600">
+                After we create thumb-stopping content, we create campaigns that
+                serve the goals and KPIs of the brand. We optimise, automate and
+                analyse the content that reaches to the audience through digital
+                medium.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Results Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Results That Speak for Themselves
             </h2>
-            <p className="text-gray-300">
+            <p className="text-gray-300 ">
               Our data-driven approach delivers measurable results for
               businesses of all sizes.
             </p>
@@ -182,8 +360,17 @@ export default function DigitalMarketingPage() {
             <MagicCard>
               <div className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-2">
-                  250%
+                  <CountUp
+                    from={0}
+                    to={250}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                  />
+                  %
                 </div>
+
                 <p className="text-gray-300">
                   Average increase in organic traffic for our clients
                 </p>
@@ -193,7 +380,15 @@ export default function DigitalMarketingPage() {
             <MagicCard>
               <div className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-2">
-                  180%
+                  <CountUp
+                    from={0}
+                    to={180}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                  />
+                  %
                 </div>
                 <p className="text-gray-300">
                   Average increase in lead generation
@@ -204,7 +399,15 @@ export default function DigitalMarketingPage() {
             <MagicCard>
               <div className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-2">
-                  320%
+                  <CountUp
+                    from={0}
+                    to={320}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                  />
+                  %
                 </div>
                 <p className="text-gray-300">Average ROI on PPC campaigns</p>
               </div>
@@ -213,7 +416,15 @@ export default function DigitalMarketingPage() {
             <MagicCard>
               <div className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-2">
-                  95%
+                  <CountUp
+                    from={0}
+                    to={95}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                  />
+                  %
                 </div>
                 <p className="text-gray-300">Client retention rate</p>
               </div>
@@ -222,151 +433,9 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 bg-blue-950/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Digital Marketing Process
-            </h2>
-            <p className="text-gray-300">
-              A proven methodology that delivers consistent results for our
-              clients.
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="absolute left-1/2 -ml-0.5 w-0.5 h-full bg-gradient-to-b from-blue-600 to-purple-600"></div>
-
-            <div className="grid grid-cols-1 gap-16">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-8 items-center"
-              >
-                <div className="md:text-right md:pr-12">
-                  <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                    1. Research & Analysis
-                  </h3>
-                  <p className="text-gray-300">
-                    We analyze your business, industry, competitors, and target
-                    audience to develop a strategic marketing plan.
-                  </p>
-                </div>
-                <div className="absolute left-0 md:left-1/2 mt-1 md:mt-0 w-6 h-6 rounded-full bg-blue-600 transform -translate-x-1/2 flex items-center justify-center">
-                  <span className="text-xs font-bold">1</span>
-                </div>
-                <MagicCard className="mt-6 md:mt-0">
-                  <div className="h-48 bg-blue-900/20 rounded-lg flex items-center justify-center">
-                    <Search size={64} className="text-blue-400" />
-                  </div>
-                </MagicCard>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-8 items-center"
-              >
-                <MagicCard className="md:order-first">
-                  <div className="h-48 bg-blue-900/20 rounded-lg flex items-center justify-center">
-                    <Megaphone size={64} className="text-purple-400" />
-                  </div>
-                </MagicCard>
-                <div className="absolute left-0 md:left-1/2 mt-1 md:mt-0 w-6 h-6 rounded-full bg-purple-600 transform -translate-x-1/2 flex items-center justify-center">
-                  <span className="text-xs font-bold">2</span>
-                </div>
-                <div className="md:pl-12 mt-6 md:mt-0">
-                  <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                    2. Strategy Development
-                  </h3>
-                  <p className="text-gray-300">
-                    We create a customized digital marketing strategy aligned
-                    with your business goals and target audience.
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-8 items-center"
-              >
-                <div className="md:text-right md:pr-12">
-                  <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                    3. Implementation
-                  </h3>
-                  <p className="text-gray-300">
-                    We execute the strategy across all relevant digital
-                    channels, optimizing for maximum performance.
-                  </p>
-                </div>
-                <div className="absolute left-0 md:left-1/2 mt-1 md:mt-0 w-6 h-6 rounded-full bg-blue-600 transform -translate-x-1/2 flex items-center justify-center">
-                  <span className="text-xs font-bold">3</span>
-                </div>
-                <MagicCard className="mt-6 md:mt-0">
-                  <div className="h-48 bg-blue-900/20 rounded-lg flex items-center justify-center">
-                    <Share2 size={64} className="text-blue-400" />
-                  </div>
-                </MagicCard>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-8 items-center"
-              >
-                <MagicCard className="md:order-first">
-                  <div className="h-48 bg-blue-900/20 rounded-lg flex items-center justify-center">
-                    <LineChart size={64} className="text-purple-400" />
-                  </div>
-                </MagicCard>
-                <div className="absolute left-0 md:left-1/2 mt-1 md:mt-0 w-6 h-6 rounded-full bg-purple-600 transform -translate-x-1/2 flex items-center justify-center">
-                  <span className="text-xs font-bold">4</span>
-                </div>
-                <div className="md:pl-12 mt-6 md:mt-0">
-                  <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                    4. Monitoring & Optimization
-                  </h3>
-                  <p className="text-gray-300">
-                    We continuously monitor performance and optimize campaigns
-                    to improve results and maximize ROI.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tools Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Marketing Tools & Technologies
-            </h2>
-            <p className="text-gray-300">
-              We leverage industry-leading tools and technologies to drive
-              results for our clients.
-            </p>
-          </div>
-
-          <IconCloud icons={icons} />
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section className="py-20 bg-blue-950/20">
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Client Success Stories
@@ -452,22 +521,47 @@ export default function DigitalMarketingPage() {
       />
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-950/40 to-black">
+      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-4"
+            >
               Ready to Grow Your Business Online?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-lg text-gray-300 mb-14"
+            >
               Let's create a digital marketing strategy that drives real results
               for your business.
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-md"
+            </motion.p>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
             >
-              Get Your Free Marketing Audit
-            </Button>
+              <div className="relative w-full md:w-auto">
+                <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  type="submit"
+                  className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
+                >
+                  Get Your Free Marketing Audit
+                </button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -478,6 +572,9 @@ export default function DigitalMarketingPage() {
         setIsOpen={setIsModalOpen}
         serviceName="Digital Marketing Services"
       />
+
+      {/* FAQ Section */}
+      <FAQSection />
     </div>
   );
 }
