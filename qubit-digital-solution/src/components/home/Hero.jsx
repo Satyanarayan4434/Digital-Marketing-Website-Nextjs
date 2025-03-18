@@ -83,15 +83,6 @@ export default function Hero() {
       </div>
 
       {/* Services Section */}
-<<<<<<< Updated upstream
-      <div className="flex flex-col gap-5 px-[5rem]">
-          <div className="text-[#f8f8fa] text-5xl font-bold">Our services</div>
-          <div className="flex justify-between items-center gap-3">
-            <div className="flex flex-col gap-2">
-              <div className="flex gap-1 text-base text-[#f8f8fa] items-center  "><MdOutlineLightbulb size="2rem"/>Brand Strategy Agency</div>
-              <div className="text-[#5e616e] text-sm font-sans ">Empowering businesses with strategic branding solutions, innovative design, and impactful marketing to elevate growth, engagement, and customer loyalty worldwide.</div>
-              <Link href="/" className="text-md font-semibold text-[#f8f8fa] flex gap-1 items-center">Learn More <IoIosArrowForward /></Link>
-=======
       <div className="flex flex-col gap-5 px-[4rem]">
         <div className="text-[#f8f8fa] text-5xl font-bold">Our services</div>
         <div className="flex justify-between items-center gap-3">
@@ -99,7 +90,6 @@ export default function Hero() {
             <div className="flex gap-1 text-base text-[#f8f8fa] items-center  ">
               <MdOutlineLightbulb size="2rem" />
               Brand Strategy Agency
->>>>>>> Stashed changes
             </div>
             <div className="text-[#5e616e] text-sm font-sans ">
               Empowering businesses with strategic branding solutions,
