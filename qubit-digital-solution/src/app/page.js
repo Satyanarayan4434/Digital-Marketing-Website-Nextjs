@@ -1,7 +1,7 @@
 import Hero from "@/components/home/Hero";
 import ServiceHighlights from "@/components/home/service-highlights";
 import WhyChooseUs from "@/components/home/why-choose-us";
-import PricingPlans from "@/components/home/pricing-plans";
+import PricingPlans from "@/components/home/PricingSection";
 
 
 export default function Home() {
@@ -9,8 +9,8 @@ export default function Home() {
     <div className="flex flex-col">
       <Hero />
       <ServiceHighlights />
+      <PricingPlans/>
       <WhyChooseUs />
-      <PricingPlans />
     </div>
   );
 }
