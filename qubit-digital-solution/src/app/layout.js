@@ -3,6 +3,7 @@ import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import initDB from "@/lib/init-db";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -16,6 +17,8 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+await initDB();
+
 export const metadata = {
   title: "Qubit Digital Solution - Digital Marketing Platform",
   description: "Your partner for digital marketing success",
@@ -25,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en scroll-smooth">
-        <body className={roboto.className} >
+        <body className={roboto.className}>
           <div className="flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>

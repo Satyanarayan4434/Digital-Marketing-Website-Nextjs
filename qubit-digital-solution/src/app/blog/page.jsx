@@ -1,84 +1,93 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { formatDistanceToNow } from "date-fns";
-
-export const metadata = {
-  title: "Blog - Qubit Digital Solution",
-  description:
-    "Read our latest articles on digital marketing trends and strategies",
-};
-
-// This would typically come from your database
-const posts = [
-  {
-    id: 1,
-    title: "10 SEO Strategies to Boost Your Website Ranking",
-    excerpt:
-      "Learn the top SEO strategies that can help improve your website's visibility and ranking on search engines.",
-    date: new Date("2023-05-15"),
-    author: "John Doe",
-    slug: "10-seo-strategies",
-    category: "SEO",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    id: 2,
-    title: "The Power of Social Media Marketing for Small Businesses",
-    excerpt:
-      "Discover how small businesses can leverage social media marketing to reach their target audience and grow their brand.",
-    date: new Date("2023-05-10"),
-    author: "Jane Smith",
-    slug: "social-media-marketing-small-businesses",
-    category: "Social Media",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    id: 3,
-    title: "Email Marketing Best Practices for 2023",
-    excerpt:
-      "Stay ahead of the curve with these email marketing best practices that will help you improve open rates and conversions.",
-    date: new Date("2023-05-05"),
-    author: "Mike Johnson",
-    slug: "email-marketing-best-practices-2023",
-    category: "Email Marketing",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    id: 4,
-    title: "How to Create a Successful Content Marketing Strategy",
-    excerpt:
-      "Learn how to develop a content marketing strategy that engages your audience and drives business results.",
-    date: new Date("2023-04-28"),
-    author: "Sarah Williams",
-    slug: "successful-content-marketing-strategy",
-    category: "Content Marketing",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    id: 5,
-    title: "The Future of Digital Marketing: Trends to Watch",
-    excerpt:
-      "Explore the emerging trends in digital marketing that will shape the industry in the coming years.",
-    date: new Date("2023-04-20"),
-    author: "David Brown",
-    slug: "future-digital-marketing-trends",
-    category: "Digital Marketing",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    id: 6,
-    title: "Measuring ROI in Digital Marketing Campaigns",
-    excerpt:
-      "Learn how to effectively measure the return on investment of your digital marketing campaigns.",
-    date: new Date("2023-04-15"),
-    author: "Emily Davis",
-    slug: "measuring-roi-digital-marketing",
-    category: "Analytics",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-];
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Loader2, Search } from "lucide-react";
 
 export default function BlogPage() {
+  const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  useEffect(() => {
+    if (blogs.length > 0) {
+      // Extract unique categories
+      const uniqueCategories = [
+        "All",
+        ...new Set(blogs.map((blog) => blog.category)),
+      ];
+      setCategories(uniqueCategories);
+
+      // Filter blogs based on search term and category
+      let filtered = blogs;
+
+      if (searchTerm) {
+        filtered = filtered.filter(
+          (blog) =>
+            blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+
+      if (selectedCategory !== "All") {
+        filtered = filtered.filter(
+          (blog) => blog.category === selectedCategory
+        );
+      }
+
+      setFilteredBlogs(filtered);
+    }
+  }, [blogs, searchTerm, selectedCategory]);
+
+  // Update the fetchBlogs function to ensure it's using the correct API endpoint
+  const fetchBlogs = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/blogs");
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch blogs",);
+      }
+
+      const data = await response.json();
+      setBlogs(data.blogs || []);
+      setFilteredBlogs(data.blogs || []);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -87,57 +96,87 @@ export default function BlogPage() {
             Our Blog
           </h1>
           <p className="mt-2 text-lg leading-8 text-gray-600">
-            Insights, strategies, and news from the world of digital marketing
+            Insights, strategies, and tips to help you succeed in digital
+            marketing
           </p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {posts.map((post) => (
-            <article key={post.id} className="flex flex-col items-start">
-              <div className="relative w-full">
-                <Image
-                  src={post.image || "/placeholder.svg"}
-                  alt={post.title}
-                  width={600}
-                  height={400}
-                  className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-                />
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-              </div>
-              <div className="max-w-xl">
-                <div className="mt-8 flex items-center gap-x-4 text-xs">
-                  <time
-                    dateTime={post.date.toISOString()}
-                    className="text-gray-500"
-                  >
-                    {formatDistanceToNow(post.date, { addSuffix: true })}
-                  </time>
-                  <span className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
-                    {post.category}
-                  </span>
-                </div>
-                <div className="group relative">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <Link href={`/blog/${post.slug}`}>
-                      <span className="absolute inset-0" />
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                    {post.excerpt}
-                  </p>
-                </div>
-                <div className="relative mt-8 flex items-center gap-x-4">
-                  <div className="text-sm leading-6">
-                    <p className="font-semibold text-gray-900">
-                      <span className="absolute inset-0" />
-                      {post.author}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
+
+        <div className="mx-auto mt-10 max-w-2xl">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+            <Input
+              type="text"
+              placeholder="Search articles..."
+              className="pl-10"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+        </div>
+
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              size="sm"
+              onClick={() => handleCategorySelect(category)}
+            >
+              {category}
+            </Button>
           ))}
         </div>
+
+        {isLoading ? (
+          <div className="flex justify-center py-20">
+            <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
+          </div>
+        ) : filteredBlogs.length === 0 ? (
+          <div className="mt-16 text-center">
+            <p className="text-lg text-gray-600">
+              No blog posts found. Please try a different search term or
+              category.
+            </p>
+          </div>
+        ) : (
+          <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            {filteredBlogs.map((blog) => (
+              <Card key={blog._id} className="overflow-hidden">
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={
+                      blog.featuredImage ||
+                      "/placeholder.svg?height=400&width=600"
+                    }
+                    alt={blog.title}
+                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <CardHeader>
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
+                      {blog.category}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {formatDate(blog.createdAt)}
+                    </span>
+                  </div>
+                  <CardTitle className="line-clamp-2 hover:text-blue-600">
+                    <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
+                  </CardTitle>
+                  <CardDescription className="line-clamp-3">
+                    {blog.excerpt}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={`/blog/${blog.slug}`}>Read More</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -44,8 +44,10 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef(null);
 
+  // Check if the user has an admin role via publicMetadata
   const isAdmin = user?.publicMetadata?.role === "admin";
 
+  // Close the services dropdown if clicking outside of it.
   useEffect(() => {
     function handleClickOutside(event) {
       if (servicesRef.current && !servicesRef.current.contains(event.target)) {
