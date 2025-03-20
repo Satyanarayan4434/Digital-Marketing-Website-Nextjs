@@ -5,7 +5,6 @@ import Link from "next/link";
 import { UserButton, SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 import Image from "next/image";
 
 const navLinks = [
@@ -53,7 +52,6 @@ export default function Navbar() {
         setServicesOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -63,12 +61,17 @@ export default function Navbar() {
   return (
     <header className="bg-black shadow-sm backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
       <nav
-        className="mx-auto flex  items-center justify-between p-4 lg:px-8 bg-[#040406] text-[#b2b4bd]"
+        className="mx-auto flex items-center justify-between p-4 lg:px-8 bg-[#040406] text-[#b2b4bd]"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <Image src="/Qubit-Digital-Solution-Logo.svg" alt="Qubit Digital Solution" width={200} height={200}/>
+            <Image
+              src="/Qubit-Digital-Solution-Logo.svg"
+              alt="Qubit Digital Solution"
+              width={200}
+              height={200}
+            />
           </Link>
         </div>
 
@@ -95,8 +98,6 @@ export default function Navbar() {
                   {link.name}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
-
-                {/* Services dropdown */}
                 {servicesOpen && (
                   <div
                     className="absolute left-0 mt-2 w-[400px] rounded-md bg-gray-900/95 backdrop-blur-md shadow-lg ring-1 ring-gray-800 focus:outline-none z-50"
@@ -150,19 +151,20 @@ export default function Navbar() {
           ) : (
             <>
               <SignInButton mode="modal">
-                <Button variant="ghost"  size="lg">
+                <Button variant="ghost" size="lg">
                   Sign In
                 </Button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <Button size="lg" variant="default">Sign Up</Button>
+                <Button size="lg" variant="default">
+                  Sign Up
+                </Button>
               </SignUpButton>
             </>
           )}
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-white">
           <div className="fixed inset-0 flex">

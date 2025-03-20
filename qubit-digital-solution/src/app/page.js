@@ -1,6 +1,6 @@
 import Hero from "@/components/home/Hero";
 import ServiceHighlights from "@/components/home/service-highlights";
-import WhyChooseUs from "@/components/home/why-choose-us";
+import InquiryForm from "@/components/home/InquiryForm";
 import PricingPlans from "@/components/home/PricingSection";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <ServiceHighlights />
       <PricingPlans/>
-      <WhyChooseUs />
+      <InquiryForm />
     </div>
   );
 }
