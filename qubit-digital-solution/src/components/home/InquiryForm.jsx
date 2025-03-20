@@ -6,16 +6,25 @@ const ContactPage = () => {
   const router = useRouter();
 
   return (
-    <div className="overflow-hidden bg-[url('/assets/Hero_BG.svg')] bg-center bg-[length:190%] bg-no-repeat min-h-screen w-full">
+    <div
+      className="overflow-hidden 
+      lg:bg-[url('/assets/Hero_BG.svg')] 
+      bg-[url('/assets/Hero_Img_MB.svg')] 
+      bg-center 
+      bg-cover
+      bg-no-repeat 
+      min-h-screen 
+      w-full"
+    >
       <div className="relative z-10 container mx-auto px-4 h-screen flex flex-col items-center justify-center">
-        <div className="text-center space-y-8 max-w-3xl">
+        <div className="text-center space-y-6 sm:space-y-8 md:space-y-10 max-w-3xl">
           {/* Heading */}
-          <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold text-[#b2b4bd] mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#b2b4bd] mb-4">
             Let&apos;s Create Something Amazing
           </h1>
 
           {/* Description */}
-          <p className="text-xl sm:text-xl md:text-2xl text-[#f18252] mb-12 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-[#f18252] mb-8 md:mb-12 max-w-2xl mx-auto">
             Ready to take your digital presence to the next level? Reach out to
             our team of experts and let&apos;s discuss how we can help you
             achieve your goals.
@@ -31,9 +40,9 @@ const ContactPage = () => {
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="px-12 py-4 cursor-pointer rounded-full relative overflow-hidden bg-[#f18252] text-[#040406] border-2 border-transparent border-image-[linear-gradient(45deg,_#f18252,_#b2b4bd)_1] border-image-slice-[1]"
+            className="px-8 py-3 sm:px-10 sm:py-4 md:px-12 md:py-5 cursor-pointer rounded-full relative overflow-hidden bg-[#f18252] text-[#040406] border-2 border-transparent border-image-[linear-gradient(45deg,_#f18252,_#b2b4bd)_1] border-image-slice-[1]"
           >
-            <span className="text-xl font-semibold z-10 relative">
+            <span className="text-lg sm:text-xl md:text-2xl font-semibold z-10 relative">
               Get in Touch
             </span>
             {/* Button shine effect */}

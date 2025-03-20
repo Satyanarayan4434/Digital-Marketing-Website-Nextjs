@@ -57,7 +57,17 @@ const PricingSection = () => {
   const getCardStyle = (index) => {
     const selectedIndex = plans.findIndex(p => p.name.toLowerCase() === selectedPlan);
     const offset = index - selectedIndex;
-    
+
+    if (window.innerWidth < 768) {
+      return {
+        scale: 1,
+        translateY: 0,
+        filter: 'none',
+        opacity: 1,
+        zIndex: 10
+      };
+    }
+
     return {
       scale: offset === 0 ? 1.05 : 0.9,
       translateY: offset === 0 ? 0 : 20,
@@ -86,7 +96,7 @@ const PricingSection = () => {
             {plans.map((plan, index) => (
               <motion.div
                 key={plan.name}
-                className={`absolute md:relative w-full rounded-lg p-4 shadow-xl backdrop-blur-md border border-white/10 overflow-hidden`}
+                className={`relative w-full rounded-lg p-4 shadow-xl`}
                 style={{
                   background: plan.color,
                   height: `${plan.height}px`,
@@ -95,8 +105,8 @@ const PricingSection = () => {
                 initial={false}
                 animate={getCardStyle(index)}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                onHoverStart={() => setSelectedPlan(plan.name.toLowerCase())}
-                onHoverEnd={() => setSelectedPlan('gold')}
+                onHoverStart={() => window.innerWidth >= 768 && setSelectedPlan(plan.name.toLowerCase())}
+                onHoverEnd={() => window.innerWidth >= 768 && setSelectedPlan('gold')}
               >
                 <div className="absolute inset-0 bg-[#040406]/80" />
                 
