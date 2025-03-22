@@ -3,7 +3,8 @@ import Blog from "@/models/Blog";
 
 export async function GET(request, { params }) {
   try {
-    const blog = await Blog.findOne({ slug: params.slug });
+    const {slug} = await params;
+    const blog = await Blog.findOne({ slug });
 
     if (!blog) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });

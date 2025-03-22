@@ -2,17 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Loader2, Search } from "lucide-react";
-import { useRouter } from "next/router";
+import { Loader2, Search, Calendar, ArrowRight, Filter } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
@@ -21,6 +15,7 @@ export default function BlogPage() {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showFilters, setShowFilters] = useState(false);
 
   const router = useRouter();
 
@@ -58,7 +53,6 @@ export default function BlogPage() {
     }
   }, [blogs, searchTerm, selectedCategory]);
 
-  // Update the fetchBlogs function to ensure it's using the correct API endpoint
   const fetchBlogs = async () => {
     try {
       setIsLoading(true);
@@ -91,99 +85,190 @@ export default function BlogPage() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
+  // Blog Card Component integrated directly
+  const BlogCard = ({ blog }) => {
+    return (
+      <div className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl">
+        {/* Image container with category badge */}
+        <div className="relative">
+          {/* Category badge positioned absolute on the image */}
+          <div className="absolute left-4 top-4 z-10">
+            <span className="rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white shadow-md">
+              {blog.category}
+            </span>
+          </div>
+
+          {/* Image with overlay gradient */}
+          <div className="relative aspect-[16/9] overflow-hidden">
+            <img
+              src={
+                blog.featuredImage || "/placeholder.svg?height=400&width=600"
+              }
+              alt={blog.title}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+          </div>
+        </div>
+
+        {/* Content section */}
+        <div className="p-5">
+          {/* Date with icon */}
+          <div className="mb-3 flex items-center gap-1.5 text-sm text-gray-500">
+            <Calendar className="h-4 w-4" />
+            <span>{formatDate(blog.createdAt)}</span>
+          </div>
+
+          {/* Title with hover effect */}
+          <Link href={`/blog/${blog.slug}`}>
+            <h3 className="mb-2 text-xl font-semibold line-clamp-2 transition-colors duration-300 group-hover:text-blue-600">
+              {blog.title}
+            </h3>
+          </Link>
+
+          {/* Excerpt */}
+          <p className="mb-4 text-sm text-gray-600 line-clamp-3">
+            {blog.excerpt}
+          </p>
+
+          {/* Read more link */}
+          <Link
+            href={`/blog/${blog.slug}`}
+            className="inline-flex items-center text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
+          >
+            Read more
+            <ArrowRight className="ml-1.5 h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="bg-white py-12">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Our Blog
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
+            Discover Our Blog
           </h1>
-          <p className="mt-2 text-lg leading-8 text-gray-600">
+          <p className="mt-4 text-lg font-medium text-gray-600 md:text-xl">
             Insights, strategies, and tips to help you succeed in digital
             marketing
           </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl">
+        <div className="mx-auto mt-12 max-w-2xl rounded-xl bg-white p-4 shadow-lg">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
             <Input
               type="text"
               placeholder="Search articles..."
-              className="pl-10"
+              className="border-0 pl-10 ring-1 ring-gray-200 focus:ring-2 focus:ring-blue-500"
               value={searchTerm}
               onChange={handleSearch}
             />
           </div>
-        </div>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          {categories.map((category) => (
+          <div className="mt-4 flex items-center justify-between">
             <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
+              variant="ghost"
               size="sm"
-              onClick={() => handleCategorySelect(category)}
+              className="text-gray-600"
+              onClick={() => setShowFilters(!showFilters)}
             >
-              {category}
+              <Filter className="mr-2 h-4 w-4" />
+              {showFilters ? "Hide Filters" : "Show Filters"}
             </Button>
-          ))}
+            <span className="text-sm text-gray-500">
+              {filteredBlogs.length}{" "}
+              {filteredBlogs.length === 1 ? "article" : "articles"} found
+            </span>
+          </div>
+
+          {showFilters && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
+                  size="sm"
+                  className={
+                    selectedCategory === category
+                      ? "bg-blue-500 hover:bg-blue-600"
+                      : "hover:bg-blue-50 hover:text-blue-600"
+                  }
+                  onClick={() => handleCategorySelect(category)}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
 
         {isLoading ? (
-          <div className="flex justify-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
+          <div className="flex flex-col items-center justify-center py-20">
+            <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
+            <p className="mt-4 text-gray-600">Loading articles...</p>
           </div>
         ) : filteredBlogs.length === 0 ? (
-          <div className="mt-16 text-center">
-            <p className="text-lg text-gray-600">
-              No blog posts found. Please try a different search term or
-              category.
+          <div className="mt-16 rounded-xl bg-white p-8 text-center shadow-lg">
+            <Search className="mx-auto h-12 w-12 text-gray-300" />
+            <p className="mt-4 text-xl font-medium text-gray-700">
+              No articles found
             </p>
+            <p className="mt-2 text-gray-500">
+              Try a different search term or category
+            </p>
+            <Button
+              className="mt-6 bg-blue-500 hover:bg-blue-600"
+              onClick={() => {
+                setSearchTerm("");
+                setSelectedCategory("All");
+              }}
+            >
+              Clear filters
+            </Button>
           </div>
         ) : (
-          <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {filteredBlogs.map((blog) => (
-              <Card key={blog._id} className="overflow-hidden">
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={
-                      blog.featuredImage ||
-                      "/placeholder.svg?height=400&width=600"
-                    }
-                    alt={blog.title}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
-                      {blog.category}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {formatDate(blog.createdAt)}
-                    </span>
-                  </div>
-                  <CardTitle className="line-clamp-2 hover:text-blue-600">
-                    <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
-                  </CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    {blog.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button asChild variant="outline" size="sm">
-                    <Link href={`/blog/${blog.slug}`}>Read More</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
+              <motion.div key={blog._id} variants={itemVariants}>
+                <BlogCard blog={blog} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
-
-        <button onClick={() => router.push("/admin")} className="mt-10">
-          Admin Go To
-        </button>
       </div>
     </div>
   );
