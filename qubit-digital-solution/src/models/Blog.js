@@ -1,36 +1,53 @@
 import mongoose from "mongoose";
+import slugify from "slugify";
 
-const ContactSchema = new mongoose.Schema(
+const BlogSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
-      required: [true, "Please add a name"],
+      required: [true, "Please add a title"],
       trim: true,
+      maxlength: [100, "Title cannot be more than 100 characters"],
     },
-    email: {
+    slug: {
       type: String,
-      required: [true, "Please add an email"],
-      match: [
-        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-        "Please add a valid email",
+      unique: true,
+      lowercase: true,
+    },
+    excerpt: {
+      type: String,
+      required: [true, "Please add an excerpt"],
+      maxlength: [500, "Excerpt cannot be more than 500 characters"],
+    },
+    content: {
+      type: String,
+      required: [true, "Please add content"],
+    },
+    featuredImage: {
+      type: String,
+      default: "/placeholder.svg",
+    },
+    category: {
+      type: String,
+      required: [true, "Please add a category"],
+      enum: [
+        "Uncategorized",
+        "SEO",
+        "Social Media",
+        "Content Marketing",
+        "Email Marketing",
+        "Digital Marketing",
+        "Analytics",
       ],
+      default: "Uncategorized",
     },
-    phone: {
+    author: {
       type: String,
-      trim: true,
+      default: "Admin",
     },
-    subject: {
-      type: String,
-      trim: true,
-    },
-    message: {
-      type: String,
-      required: [true, "Please add a message"],
-    },
-    status: {
-      type: String,
-      enum: ["new", "read", "replied"],
-      default: "new",
+    published: {
+      type: Boolean,
+      default: true,
     },
   },
   {
@@ -38,5 +55,12 @@ const ContactSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.Contact ||
-  mongoose.model("Contact", ContactSchema);
+// Create slug from title before saving
+BlogSchema.pre("save", function (next) {
+  if (this.isModified("title")) {
+    this.slug = slugify(this.title, { lower: true, strict: true });
+  }
+  next();
+});
+
+export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema);

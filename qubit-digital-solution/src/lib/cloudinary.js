@@ -14,12 +14,9 @@ export async function uploadToCloudinary(file) {
     const fileBuffer = await file.arrayBuffer();
     const base64File = Buffer.from(fileBuffer).toString("base64");
     const dataURI = `data:${file.type};base64,${base64File}`;
-
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(dataURI, {
-      folder: "blogs",
       width: 1200,
-      crop: "scale",
     });
 
     return result;

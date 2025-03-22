@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2, Search } from "lucide-react";
+import { useRouter } from "next/router";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
@@ -20,6 +21,8 @@ export default function BlogPage() {
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const router = useRouter();
 
   useEffect(() => {
     fetchBlogs();
@@ -62,7 +65,7 @@ export default function BlogPage() {
       const response = await fetch("/api/blogs");
 
       if (!response.ok) {
-        throw new Error("Failed to fetch blogs",);
+        throw new Error("Failed to fetch blogs");
       }
 
       const data = await response.json();
@@ -177,6 +180,10 @@ export default function BlogPage() {
             ))}
           </div>
         )}
+
+        <button onClick={() => router.push("/admin")} className="mt-10">
+          Admin Go To
+        </button>
       </div>
     </div>
   );

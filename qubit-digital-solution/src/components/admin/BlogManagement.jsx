@@ -25,6 +25,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Pencil, Trash2, Plus, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/router";
 
 export default function BlogManagement() {
   const { user, isLoaded } = useUser();
@@ -43,6 +44,8 @@ export default function BlogManagement() {
   });
   const [selectedImage, setSelectedImage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     fetchBlogs();

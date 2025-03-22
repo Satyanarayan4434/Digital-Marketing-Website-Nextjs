@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 import connectDB from "@/lib/db";
 import Contact from "@/models/Contact";
-import { sendEmail } from "@/lib/email";
+// import { sendEmail } from "@/lib/email";
 
 export async function GET(request) {
   try {
@@ -55,40 +55,39 @@ export async function POST(request) {
     });
 
     // Send emails
-    await sendEmail({
-      to: process.env.EMAIL_USER,
-      subject: `Contact Form: ${subject || "New Message"}`,
-      html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-        <p><strong>Subject:</strong> ${subject || "Not provided"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
+    // await sendEmail({
+    //   to: process.env.EMAIL_USER,
+    //   subject: `Contact Form: ${subject || "New Message"}`,
+    //   html: `
+    //     <h3>New Contact Form Submission</h3>
+    //     <p><strong>Name:</strong> ${name}</p>
+    //     <p><strong>Email:</strong> ${email}</p>
+    //     <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+    //     <p><strong>Subject:</strong> ${subject || "Not provided"}</p>
+    //     <p><strong>Message:</strong></p>
+    //     <p>${message}</p>
+    //   `,
+    // });
 
-    await sendEmail({
-      to: email,
-      subject: "Thank you for contacting PromotEdge",
-      html: `
-        <h3>Thank you for contacting PromotEdge!</h3>
-        <p>Dear ${name},</p>
-        <p>We have received your message and will get back to you as soon as possible.</p>
-        <p>Here's a copy of your message:</p>
-        <p><strong>Subject:</strong> ${subject || "Not provided"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-        <p>Best regards,</p>
-        <p>The PromotEdge Team</p>
-      `,
-    });
+    // await sendEmail({
+    //   to: email,
+    //   subject: "Thank you for contacting PromotEdge",
+    //   html: `
+    //     <h3>Thank you for contacting PromotEdge!</h3>
+    //     <p>Dear ${name},</p>
+    //     <p>We have received your message and will get back to you as soon as possible.</p>
+    //     <p>Here's a copy of your message:</p>
+    //     <p><strong>Subject:</strong> ${subject || "Not provided"}</p>
+    //     <p><strong>Message:</strong></p>
+    //     <p>${message}</p>
+    //     <p>Best regards,</p>
+    //     <p>The PromotEdge Team</p>
+    //   `,
+    // });
 
     return NextResponse.json({
       success: true,
       message: "Your message has been sent successfully!",
-      contact,
     });
   } catch (error) {
     console.error("Error sending contact message:", error);

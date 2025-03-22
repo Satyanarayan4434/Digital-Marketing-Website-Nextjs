@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-// import { auth } from "@clerk/nextjs";
+import { getAuth } from "@clerk/nextjs/server";
 import Blog from "@/models/Blog";
 
 export async function GET(request) {
@@ -32,12 +32,13 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    // const { userId } = auth();
-
+    const { userId } = getAuth(request);
+    console.log("userId", userId);
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    console.log("request", userId);
     const formData = await request.formData();
     const title = formData.get("title");
     const excerpt = formData.get("excerpt");
@@ -48,7 +49,7 @@ export async function POST(request) {
 
     // Check if blog with same slug already exists
     const blogExists = await Blog.findOne({ slug });
-
+    console.log("blogExists", blogExists);
     if (blogExists) {
       return NextResponse.json(
         { error: "A blog with this slug already exists" },
@@ -66,7 +67,7 @@ export async function POST(request) {
       const result = await uploadToCloudinary(image);
       featuredImage = result.secure_url;
     }
-
+    console.log("featuredImage", featuredImage);
     // Create blog
     const blog = await Blog.create({
       title,
@@ -77,6 +78,7 @@ export async function POST(request) {
       author,
       featuredImage,
     });
+    
 
     return NextResponse.json(
       {
