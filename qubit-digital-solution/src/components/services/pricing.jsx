@@ -12,14 +12,18 @@ export default function PricingSection({
   bgWhite = true,
 }) {
   return (
-    <section className={`py-20 z-10 relative ${bgWhite ? "bg-white" : "bg-black"}`}>
+    <section
+      className={`py-10 lg:py-20 z-10 relative ${
+        bgWhite ? "bg-white" : "bg-black"
+      }`}
+    >
       <div className="absolute inset-0">
-          <DotPattern
-            className={cn(
-              "opacity-100",
-              "[mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
-            )}
-          />
+        <DotPattern
+          className={cn(
+            "opacity-100",
+            "[mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
+          )}
+        />
       </div>
       <div className="container max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
@@ -39,7 +43,7 @@ export default function PricingSection({
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className={`text-4xl md:text-5xl font-medium ${
+            className={`text-2xl md:text-5xl font-medium ${
               bgWhite ? "text-black" : "text-white"
             }`}
           >

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { UserButton, SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -40,6 +40,7 @@ const serviceItems = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const { isSignedIn, user } = useUser();
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef(null);
@@ -67,7 +68,10 @@ export default function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link
+            href="/"
+            className="-m-1.5 p-1.5 transition-transform duration-300 hover:scale-105"
+          >
             <Image
               src="/Qubit-Digital-Solution-Logo.svg"
               alt="Qubit Digital Solution"
@@ -80,7 +84,7 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[#b2b4bd]"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[#b2b4bd] hover:text-white transition-colors duration-200"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -93,16 +97,19 @@ export default function Navbar() {
             link.hasDropdown ? (
               <div key={link.name} className="relative" ref={servicesRef}>
                 <button
-                  className="flex items-center text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+                  className="flex items-center text-sm font-semibold leading-6 text-gray-300 hover:text-white relative group transition-colors duration-200"
                   onClick={() => setServicesOpen(!servicesOpen)}
                   onMouseEnter={() => setServicesOpen(true)}
                 >
-                  {link.name}
-                  <ChevronDown className="ml-1 h-4 w-4" />
+                  <span className="group-hover:text-primary transition-colors duration-200">
+                    {link.name}
+                  </span>
+                  <ChevronDown className="ml-1 h-4 w-4 group-hover:text-primary transition-colors duration-200" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </button>
                 {servicesOpen && (
                   <div
-                    className="absolute left-0 mt-2 w-[400px] rounded-md bg-gray-900/95 backdrop-blur-md shadow-lg ring-1 ring-gray-800 focus:outline-none z-50"
+                    className="absolute left-0 mt-2 w-[400px] rounded-md bg-gray-900/95 backdrop-blur-md shadow-lg ring-1 ring-gray-800 focus:outline-none z-50 transition-opacity duration-300 ease-in-out"
                     onMouseLeave={() => setServicesOpen(false)}
                   >
                     <div className="p-3">
@@ -111,13 +118,13 @@ export default function Navbar() {
                           <Link
                             key={item.title}
                             href={item.href}
-                            className="block p-3 hover:bg-gray-800 rounded-md group"
+                            className="block p-3 hover:bg-gray-800 rounded-md group transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
                             onClick={() => setServicesOpen(false)}
                           >
-                            <div className="text-sm font-medium text-white mb-1">
+                            <div className="text-sm font-medium text-white mb-1 transition-colors duration-200">
                               {item.title}
                             </div>
-                            <div className="text-sm text-gray-400 group-hover:text-gray-300">
+                            <div className="text-sm text-gray-400 group-hover:text-gray-200 transition-colors duration-200">
                               {item.description}
                             </div>
                           </Link>
@@ -131,34 +138,48 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold leading-6 text-gray-300 hover:text-white"
+                className="text-sm font-semibold leading-6 text-gray-300 hover:text-white relative group transition-colors duration-200"
               >
-                {link.name}
+                <span className="group-hover:text-primary transition-colors duration-200">
+                  {link.name}
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></span>
               </Link>
             )
           )}
           {isAdmin && (
             <Link
               href="/admin"
-              className="text-sm font-semibold leading-6 text-primary hover:text-primary/80"
+              className="text-sm font-semibold leading-6 text-primary hover:text-primary/80 relative group transition-colors duration-200"
             >
-              Dashboard
+              <span>Dashboard</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></span>
             </Link>
           )}
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
           {isSignedIn ? (
-            <UserButton afterSignOutUrl="/" />
+            <div className="transition-transform hover:scale-105 duration-200">
+              <UserButton afterSignOutUrl="/" />
+            </div>
           ) : (
             <>
               <SignInButton mode="modal">
-                <Button variant="ghost" size="lg">
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="transition-colors duration-200 hover:text-primary hover:bg-gray-900"
+                >
                   Sign In
                 </Button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <Button size="lg" variant="default">
+                <Button
+                  size="lg"
+                  variant="default"
+                  className="transition-transform duration-200 hover:scale-105 hover:shadow-lg"
+                >
                   Sign Up
                 </Button>
               </SignUpButton>
@@ -168,18 +189,25 @@ export default function Navbar() {
       </nav>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white">
-          <div className="fixed inset-0 flex">
-            <div className="relative flex w-full max-w-sm flex-1 flex-col overflow-y-auto bg-white pb-4 pt-5">
+        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm">
+          <div className="fixed inset-0 flex ">
+            <div className="relative flex w-full h-screen max-w-sm flex-1 flex-col bg-[#040406] pb-4 pt-5">
               <div className="flex items-center justify-between px-4">
-                <Link href="/" className="-m-1.5 p-1.5">
-                  <span className="text-xl font-bold text-primary">
-                    Qubit Digital Solution
-                  </span>
+                <Link
+                  href="/"
+                  className="-m-1.5 p-1.5 transition-transform duration-200 hover:scale-105"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Image
+                    src="/Qubit-Digital-Solution-Logo.svg"
+                    alt="Qubit Digital Solution"
+                    width={150}
+                    height={150}
+                  />
                 </Link>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-300 hover:text-white transition-colors duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -187,48 +215,95 @@ export default function Navbar() {
                 </button>
               </div>
               <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
+                <div className="-my-6 divide-y divide-gray-800">
                   <div className="space-y-2 py-6 px-4">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.name}
-                        href={link.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
+                    {navLinks.map((link) =>
+                      link.hasDropdown ? (
+                        <div key={link.name} className="space-y-2">
+                          <button
+                            className="flex w-full items-center justify-between -mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:text-primary hover:bg-gray-800/60 transition-all duration-200"
+                            onClick={() =>
+                              setMobileServicesOpen(!mobileServicesOpen)
+                            }
+                          >
+                            {link.name}
+                            <ChevronDown
+                              className={`h-5 w-5 transition-transform duration-200 ${
+                                mobileServicesOpen
+                                  ? "rotate-180 text-primary"
+                                  : ""
+                              }`}
+                            />
+                          </button>
+
+                          {mobileServicesOpen && (
+                            <div className="ml-4 pl-2 border-l border-gray-700 space-y-2">
+                              {serviceItems.map((item) => (
+                                <Link
+                                  key={item.title}
+                                  href={item.href}
+                                  className="flex flex-col -mx-3 rounded-lg px-3 py-2 text-base leading-7 text-gray-300 hover:bg-gray-800/60 hover:text-white transition-all duration-200 transform hover:translate-x-1"
+                                  onClick={() => {
+                                    setMobileServicesOpen(false);
+                                    setMobileMenuOpen(false);
+                                  }}
+                                >
+                                  <span className="font-medium hover:text-primary transition-colors duration-200">
+                                    {item.title}
+                                  </span>
+                                  <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-200">
+                                    {item.description}
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <Link
+                          key={link.name}
+                          href={link.href}
+                          className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:text-primary hover:bg-gray-800/60 transition-all duration-200 transform hover:translate-x-1"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {link.name}
+                          <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      )
+                    )}
                     {isAdmin && (
                       <Link
                         href="/admin"
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-primary hover:bg-gray-50"
+                        className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-primary hover:text-primary/80 hover:bg-gray-800/60 transition-all duration-200 transform hover:translate-x-1"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Dashboard
+                        <ChevronRight className="h-5 w-5" />
                       </Link>
                     )}
                   </div>
                   <div className="py-6 px-4 flex flex-col gap-4">
                     {isSignedIn ? (
                       <div className="flex items-center gap-4">
-                        <span className="text-sm">
+                        <span className="text-sm text-gray-300">
                           Hello, {user.firstName || "User"}
                         </span>
-                        <UserButton afterSignOutUrl="/" />
+                        <div className="transition-transform hover:scale-105 duration-200">
+                          <UserButton afterSignOutUrl="/" />
+                        </div>
                       </div>
                     ) : (
                       <>
                         <SignInButton mode="modal">
                           <Button
-                            variant="ghost"
-                            className="w-full justify-center"
+                            variant="outline"
+                            className="w-full justify-center bg-transparent border-gray-700 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors duration-200"
                           >
                             Sign In
                           </Button>
                         </SignInButton>
                         <SignUpButton mode="modal">
-                          <Button className="w-full justify-center">
+                          <Button className="w-full justify-center transition-transform duration-200 hover:scale-105 hover:shadow-md">
                             Sign Up
                           </Button>
                         </SignUpButton>

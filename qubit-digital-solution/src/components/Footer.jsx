@@ -1,12 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Github, Youtube, Linkedin } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="bg-[url('/assets/Footer.png')] bg-cover bg-center bg-no-repeat min-h-[300px] w-full text-white border-t border-gray-800 py-5">
+    <footer className="bg-[url('/assets/Footer.png')] bg-cover bg-center bg-no-repeat w-full text-white border-t border-gray-800 py-5">
       <div className="container w-11/12 mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="mb-8 md:mb-0 text-center md:text-left">
@@ -23,7 +22,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-[14px] text-center md:text-left">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-[14px] pb-3 text-center md:text-left">
             {[
               { title: "Services", links: ["SDK development & maintenance", "Cross-platform development"] },
               { title: "Products", links: ["Globe.dev", "Zapp.run", "Docs.page"] },

@@ -14,7 +14,7 @@ const services = [
       "Develop a unique brand identity that resonates with your target audience and sets you apart from competitors.",
     icon: Lightbulb,
     href: "/services/brand-strategy",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/assets/Brand.jpg",
   },
   {
     name: "Creative Designing",
@@ -22,7 +22,7 @@ const services = [
       "Eye-catching visuals and designs that communicate your brand message effectively across all platforms.",
     icon: Palette,
     href: "/services/creative-designing",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/services/Design.webp",
   },
   {
     name: "Web Solutions",
@@ -30,7 +30,7 @@ const services = [
       "Custom websites and web applications that provide seamless user experiences and drive conversions.",
     icon: Globe,
     href: "/services/web-solutions",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/services/Web_Design.jpg",
   },
   {
     name: "Digital Marketing",
@@ -38,7 +38,7 @@ const services = [
       "Comprehensive digital marketing strategies to increase visibility, engagement, and ROI.",
     icon: BarChart3,
     href: "/services/digital-marketing",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/services/Digital.jpg",
   },
 ];
 

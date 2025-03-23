@@ -113,19 +113,19 @@ export default function WebDevelopmentPage() {
   return (
     <div className="min-h-screen bg-[#EFEFF0] text-white">
       {/* hero section 1 Intro */}
-      <section className="relative overflow-hidden bg-black pb-26">
-        <div className="flex flex-col max-w-7xl mx-auto">
-          <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-10">
+      <section className="relative overflow-hidden bg-black pb-16 md:pb-26">
+        <div className="flex flex-col max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-5 md:py-10">
             Web Development Services
           </h1>
           <div className="flex flex-wrap gap-8 ">
             <img
               src="/services/Web_Design.jpg"
               alt="Web Development"
-              className="w-[45%] rounded-lg"
+              className="lg:w-[45%] rounded-lg"
             />
 
-            <div className="flex flex-col justify-center items-center gap-4 w-1/2 text-gray-300 leading-loose">
+            <div className="flex flex-col justify-center items-center gap-4 lg:w-1/2 text-gray-300 leading-loose">
               <p>
                 Harness the power of modern technology and strategic SEO
                 optimization to drive your business forward. Our approach
@@ -153,7 +153,7 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* Hero Section 2*/}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-10 px-4 md:py-20 overflow-hidden">
         {/* Background pattern with glow effect */}
         <div className="absolute inset-0">
           <DotPattern
@@ -164,15 +164,15 @@ export default function WebDevelopmentPage() {
           />
         </div>
 
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <div className="container pl-10 ml-20 relative  ">
+        <div className="flex flex-wrap justify-between items-center max-w-7xl mx-auto">
+          <div className="container md:pl-10 md:ml-20 relative  ">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className=" max-w-3xl mx-auto"
             >
-              <h1 className="text-4xl text-black font-semibold py-5">
+              <h1 className="text-2xl lg:text-4xl text-black font-semibold py-5">
                 When to choose Qubit Digital Solution
               </h1>
               <ul className="text-gray-800 font-medium flex flex-col  gap-4">
@@ -290,7 +290,7 @@ export default function WebDevelopmentPage() {
       />
 
       {/* CTA Section */}
-      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
+      <section className="bg-[url('/assets/Group.png')] py-20 bg-center md:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

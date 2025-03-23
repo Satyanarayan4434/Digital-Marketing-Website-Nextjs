@@ -37,7 +37,7 @@ export default function BrandStrategyPage() {
   return (
     <div className="min-h-screen bg-[#EFEFF0] text-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black pb-28">
+      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black pb-28 px-4">
         <div className="flex flex-col max-w-7xl mx-auto">
           <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-10">
             Brand Strategy Agency
@@ -46,10 +46,10 @@ export default function BrandStrategyPage() {
             <img
               src="/assets/Brand.jpg"
               alt="Web Development"
-              className="w-[45%] rounded-lg"
+              className="lg:w-[45%] rounded-lg"
             />
 
-            <div className="flex flex-col justify-center items-center gap-4 w-1/2 text-gray-300 leading-loose">
+            <div className="flex flex-col justify-center items-center gap-4 lg:w-1/2 text-gray-300 leading-loose">
               <p>
                 Crafting a strong brand strategy is the first step toward
                 building a lasting identity in any market. Whether you’re an
@@ -77,7 +77,7 @@ export default function BrandStrategyPage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-black">
+      <section className="pb-10 lg:py-20 bg-black">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h2
@@ -159,11 +159,15 @@ export default function BrandStrategyPage() {
               </motion.div>
             ))}
           </div>
+
+          <div className="text-center text-2xl mt-10 font-medium md:hidden lg:hidden">
+            What Our Clients Say{" "}
+          </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-white text-black">
+      <section className="py-20 hidden md:block bg-white text-black">
         <DotPattern className="opacity-10" />
         <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -303,16 +307,16 @@ export default function BrandStrategyPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-28 relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full">
+      <section className="lg:py-28  relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat lg:min-h-[500px] w-full">
         <DotPattern />
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto hidden md:block lg:mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-3xl md:text-4xl font-bold lg:mb-4"
             >
               What Our Clients Say
             </motion.h2>
@@ -328,7 +332,7 @@ export default function BrandStrategyPage() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-5 ">
             <TestimonialCard
               quote="The brand strategy they developed for us completely transformed how our customers perceive us. Our engagement has increased by 150% since the rebrand."
               author="Sarah Johnson"
@@ -404,7 +408,7 @@ export default function BrandStrategyPage() {
       />
 
       {/* CTA Section */}
-      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
+      <section className="bg-[url('/assets/Group.png')] lg:py-20 bg-center lg:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <motion.h2

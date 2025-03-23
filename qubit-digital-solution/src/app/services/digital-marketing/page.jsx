@@ -39,25 +39,25 @@ export default function DigitalMarketingPage() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black pb-28">
-        <div className="container flex flex-col max-w-7xl mx-auto">
+      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black lg:pb-28">
+        <div className="container flex flex-col max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className=""
           >
-            <h1 className="text-4xl font-medium tracking-tight text-gray-300 py-10">
+            <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-gray-300 py-5 md:py-10">
               Digital Marketing Services
             </h1>
             <div className="flex flex-wrap gap-8 ">
               <img
                 src="/services/Digital.jpg"
                 alt="Web Development"
-                className="w-[49%] rounded-lg"
+                className="lg:w-[49%] rounded-lg"
               />
 
-              <div className="flex flex-col justify-center items-center gap-4 w-[45%] text-gray-300">
+              <div className="flex flex-col justify-center items-center gap-4 lg:w-[45%] text-gray-300">
                 <p>
                   Marketing virtually to grow an online presence and gain
                   recognition is what digital marketing thrives to do. As a
@@ -521,7 +521,7 @@ export default function DigitalMarketingPage() {
       />
 
       {/* CTA Section */}
-      <section className="bg-[url('/assets/Group.png')] py-20 bg-center bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
+      <section className="bg-[url('/assets/Group.png')] py-20 bg-center md:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <motion.h2
