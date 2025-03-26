@@ -1,11 +1,21 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCheck, FiX, FiZap, FiStar, FiGlobe } from 'react-icons/fi';
 
 const PricingSection = () => {
   const [selectedPlan, setSelectedPlan] = useState('gold');
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const plans = [
     {
       name: 'Bronze',
@@ -58,7 +68,7 @@ const PricingSection = () => {
     const selectedIndex = plans.findIndex(p => p.name.toLowerCase() === selectedPlan);
     const offset = index - selectedIndex;
 
-    if (window.innerWidth < 768) {
+    if (isMobile) {
       return {
         scale: 1,
         translateY: 0,
@@ -105,8 +115,8 @@ const PricingSection = () => {
                 initial={false}
                 animate={getCardStyle(index)}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                onHoverStart={() => window.innerWidth >= 768 && setSelectedPlan(plan.name.toLowerCase())}
-                onHoverEnd={() => window.innerWidth >= 768 && setSelectedPlan('gold')}
+                onHoverStart={() => !isMobile && setSelectedPlan(plan.name.toLowerCase())}
+                onHoverEnd={() => !isMobile && setSelectedPlan('gold')}
               >
                 <div className="absolute inset-0 bg-[#040406]/80" />
                 
