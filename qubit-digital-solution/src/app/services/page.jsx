@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Palette, BarChart3, Globe, Lightbulb, ArrowRight } from "lucide-react";
+import ProfileUpdater from "@/components/services/ProfileUpdater";
 
 export const metadata = {
   title: "Services - Qubit Digital Solution",
@@ -45,6 +46,9 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="bg-white py-12">
+      {/* Add the ProfileUpdater component here */}
+      <ProfileUpdater />
+
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Hero section */}
         <div className="mx-auto max-w-2xl text-center">

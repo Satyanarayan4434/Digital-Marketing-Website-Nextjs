@@ -1,4 +1,3 @@
-// import { authMiddleware } from "@clerk/nextjs";
 import { clerkMiddleware } from "@clerk/nextjs/server";
 export default clerkMiddleware({
   // Routes that can be accessed while signed out
@@ -12,6 +11,9 @@ export default clerkMiddleware({
     "/about",
     "/api/contact",
     "/api/blogs",
+    "/signup",
+    "/signin",
+    "/sso-callback",
     // "/api/blogs/(.*)", // Allow all blog API routes
   ],
 });

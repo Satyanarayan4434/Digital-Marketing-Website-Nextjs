@@ -1,17 +1,29 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import Blog from "@/models/Blog";
 import Contact from "@/models/Contact";
 
 export async function GET(request) {
   try {
-    const { userId } = auth();
+    // Get the authentication information
+    // const { userId, sessionId, getToken } = auth();
+    // console.log("Full auth object:", { userId, sessionId , getToken});
+    // Attempt to get the current user for additional debugging
+    const user = await currentUser();
 
+    console.log("Authentication Debug:", {
+      user: user.id,
+      userExists: !!user,
+      userEmail: user?.emailAddresses[0]?.emailAddress,
+    });
+
+    const userId = user?.id;
+    // Check if userId exists
     if (!userId) {
+      console.log("No authenticated user found");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // No need to call connectDB() here
     // Get total blogs
     const totalBlogs = await Blog.countDocuments();
 
@@ -37,9 +49,9 @@ export async function GET(request) {
       recentMessages,
     });
   } catch (error) {
-    console.error("Error fetching dashboard stats:", error);
+    console.error("Error in dashboard stats route:", error);
     return NextResponse.json(
-      { error: "Failed to fetch dashboard stats" },
+      { error: "Failed to fetch dashboard stats", details: error.message },
       { status: 500 }
     );
   }

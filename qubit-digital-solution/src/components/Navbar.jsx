@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { UserButton, SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
+import { UserButton, SignInButton, useUser } from "@clerk/nextjs";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -44,6 +45,7 @@ export default function Navbar() {
   const { isSignedIn, user } = useUser();
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef(null);
+  const router = useRouter();
 
   // Check if the user has an admin role via publicMetadata
   const isAdmin = user?.publicMetadata?.role === "admin";
@@ -61,6 +63,14 @@ export default function Navbar() {
     };
   }, [servicesRef]);
 
+  // Handle navigation to custom signup page
+  const handleSignUpClick = () => {
+    router.push("/signup");
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header className="bg-black shadow-sm backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
       <nav
@@ -70,7 +80,7 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link
             href="/"
-            className="-m-1.5 p-1.5 transition-transform duration-300 hover:scale-105"
+            className="-m-1.5 p-1.5 transition-transform duration-300"
           >
             <Image
               src="/Qubit-Digital-Solution-Logo.svg"
@@ -97,14 +107,12 @@ export default function Navbar() {
             link.hasDropdown ? (
               <div key={link.name} className="relative" ref={servicesRef}>
                 <button
-                  className="flex items-center text-sm font-semibold leading-6 text-gray-300 hover:text-white relative group transition-colors duration-200"
+                  className="flex items-center text-sm font-semibold leading-6 text-gray-300 hover:text-white relative  duration-200"
                   onClick={() => setServicesOpen(!servicesOpen)}
                   onMouseEnter={() => setServicesOpen(true)}
                 >
-                  <span className="group-hover:text-primary transition-colors duration-200">
-                    {link.name}
-                  </span>
-                  <ChevronDown className="ml-1 h-4 w-4 group-hover:text-primary transition-colors duration-200" />
+                  <span className="">{link.name}</span>
+                  <ChevronDown className="ml-1 h-4 w-4  transition-colors duration-200" />
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </button>
                 {servicesOpen && (
@@ -138,11 +146,9 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold leading-6 text-gray-300 hover:text-white relative group transition-colors duration-200"
+                className="text-sm font-semibold leading-6 text-gray-300 duration-200"
               >
-                <span className="group-hover:text-primary transition-colors duration-200">
-                  {link.name}
-                </span>
+                <span className="">{link.name}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></span>
               </Link>
             )
@@ -174,15 +180,14 @@ export default function Navbar() {
                   Sign In
                 </Button>
               </SignInButton>
-              <SignUpButton mode="modal">
-                <Button
-                  size="lg"
-                  variant="default"
-                  className="transition-transform duration-200 hover:scale-105 hover:shadow-lg"
-                >
-                  Sign Up
-                </Button>
-              </SignUpButton>
+              <Button
+                size="lg"
+                variant="default"
+                className="transition-transform duration-200 hover:scale-105 hover:shadow-lg"
+                onClick={handleSignUpClick}
+              >
+                Sign Up
+              </Button>
             </>
           )}
         </div>
@@ -302,11 +307,12 @@ export default function Navbar() {
                             Sign In
                           </Button>
                         </SignInButton>
-                        <SignUpButton mode="modal">
-                          <Button className="w-full justify-center transition-transform duration-200 hover:scale-105 hover:shadow-md">
-                            Sign Up
-                          </Button>
-                        </SignUpButton>
+                        <Button
+                          className="w-full justify-center transition-transform duration-200 hover:scale-105 hover:shadow-md"
+                          onClick={handleSignUpClick}
+                        >
+                          Sign Up
+                        </Button>
                       </>
                     )}
                   </div>
