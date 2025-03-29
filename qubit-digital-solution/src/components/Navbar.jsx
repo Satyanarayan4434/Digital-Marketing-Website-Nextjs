@@ -302,7 +302,7 @@ export default function Navbar() {
                         <SignInButton mode="modal">
                           <Button
                             variant="outline"
-                            className="w-full justify-center bg-transparent border-gray-700 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors duration-200"
+                            className="w-full justify-center transition-transform duration-200 hover:scale-105 hover:shadow-md"
                           >
                             Sign In
                           </Button>

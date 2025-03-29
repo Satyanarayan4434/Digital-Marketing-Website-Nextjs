@@ -12,6 +12,7 @@ import {
   Menu,
   X,
   Home,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -23,6 +24,7 @@ export default function DashboardLayout({ children }) {
   const navigation = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Blog Posts", href: "/admin/blogs", icon: FileText },
+    { name: "Users", href: "/admin/users", icon: User },
     { name: "Messages", href: "/admin/messages", icon: Mail },
     { name: "Settings", href: "/admin/settings", icon: Settings },
   ];

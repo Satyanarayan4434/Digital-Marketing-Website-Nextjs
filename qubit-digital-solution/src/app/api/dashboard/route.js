@@ -1,14 +1,10 @@
 import { NextResponse } from "next/server";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
 import Blog from "@/models/Blog";
 import Contact from "@/models/Contact";
 
 export async function GET(request) {
   try {
-    // Get the authentication information
-    // const { userId, sessionId, getToken } = auth();
-    // console.log("Full auth object:", { userId, sessionId , getToken});
-    // Attempt to get the current user for additional debugging
     const user = await currentUser();
 
     console.log("Authentication Debug:", {
@@ -18,11 +14,19 @@ export async function GET(request) {
     });
 
     const userId = user?.id;
-    // Check if userId exists
     if (!userId) {
       console.log("No authenticated user found");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const client = await clerkClient();
+    const userData = await client.users.getUserList();
+    const totalUserCount = userData.totalCount;
+
+    const today = new Date();
+    const dailySignUpCount = userData?.data.filter((user) => {
+      const createdAt = new Date(user.createdAt);
+      return createdAt.toDateString() === today.toDateString();
+    }).length;
 
     // Get total blogs
     const totalBlogs = await Blog.countDocuments();
@@ -47,6 +51,8 @@ export async function GET(request) {
       totalMessages,
       recentBlogs,
       recentMessages,
+      totalUserCount,
+      dailySignUpCount,
     });
   } catch (error) {
     console.error("Error in dashboard stats route:", error);
