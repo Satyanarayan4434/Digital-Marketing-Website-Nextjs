@@ -11,7 +11,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import QueryModal from "@/components/services/query-modal";
-import PricingSection from "@/components/services/pricing";
+import PricingSection from "@/components/home/PricingSection";
 import { IconCloud } from "@/components/magicui/icon-cloud";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
@@ -234,60 +234,7 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* Pricing Section */}
-      <PricingSection
-        title="Pricing"
-        description="Choose the perfect plan for your needs"
-        bgWhite={true}
-        packages={[
-          {
-            title: "Basic Website",
-            description:
-              "Perfect for small businesses needing a professional online presence.",
-            price: "2,999",
-            features: [
-              "5-7 Pages",
-              "Responsive Design",
-              "Basic SEO Setup",
-              "Contact Form",
-              "Content Management System",
-              "30 Days Support",
-            ],
-            popular: false,
-          },
-          {
-            title: "Business Website",
-            description:
-              "Ideal for growing businesses requiring advanced functionality.",
-            price: "5,999",
-            features: [
-              "10-15 Pages",
-              "Responsive Design",
-              "Advanced SEO Setup",
-              "Custom Forms & Features",
-              "Content Management System",
-              "E-commerce Integration",
-              "90 Days Support",
-            ],
-            popular: true,
-          },
-          {
-            title: "Custom Web Application",
-            description:
-              "Tailored for businesses needing specialized web solutions.",
-            price: "Custom",
-            features: [
-              "Custom Functionality",
-              "User Authentication",
-              "Database Integration",
-              "API Development",
-              "Third-party Integrations",
-              "Scalable Architecture",
-              "Ongoing Support & Maintenance",
-            ],
-            popular: false,
-          },
-        ]}
-      />
+      <PricingSection/>
 
       {/* CTA Section */}
       <section className="bg-[url('/assets/Group.png')] py-20 bg-center md:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
