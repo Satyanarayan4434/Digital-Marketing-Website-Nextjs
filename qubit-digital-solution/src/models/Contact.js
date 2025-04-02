@@ -10,16 +10,8 @@ const ContactSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, "Please add an email"],
-      match: [
-        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-        "Please add a valid email",
-      ],
     },
     phone: {
-      type: String,
-      trim: true,
-    },
-    subject: {
       type: String,
       trim: true,
     },
@@ -32,6 +24,11 @@ const ContactSchema = new mongoose.Schema(
       enum: ["new", "read", "replied"],
       default: "new",
     },
+    serviceType: {
+      type: String,
+      enum: ["web-development", "brand-strategy", "creative-designing", "digital-marketing", "other"],
+      default: "other",
+    }
   },
   {
     timestamps: true,

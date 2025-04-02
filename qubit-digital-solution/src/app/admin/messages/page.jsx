@@ -287,7 +287,7 @@ export default function MessagesPage() {
                           message.status.slice(1)}
                       </Badge>
                       <CardTitle className="mt-2 line-clamp-1">
-                        {message.subject || "No Subject"}
+                        {message?.serviceType || "No Subject"}
                       </CardTitle>
                       <CardDescription>From: {message.name}</CardDescription>
                     </div>
@@ -375,7 +375,7 @@ export default function MessagesPage() {
               <>
                 <DialogHeader>
                   <DialogTitle>
-                    {currentMessage.subject || "No Subject"}
+                    {currentMessage.serviceType || "No Subject"}
                   </DialogTitle>
                   <DialogDescription>
                     From: {currentMessage.name} ({currentMessage.email})

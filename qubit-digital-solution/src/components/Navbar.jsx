@@ -200,7 +200,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between px-4">
                 <Link
                   href="/"
-                  className="-m-1.5 p-1.5 transition-transform duration-200 hover:scale-105"
+                  className="-m-1.5 p-1.5 transition-transform duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Image
@@ -212,7 +212,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-300 hover:text-white transition-colors duration-200"
+                  className="-m-2.5 rounded-md p-2.5 text-white"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -226,7 +226,7 @@ export default function Navbar() {
                       link.hasDropdown ? (
                         <div key={link.name} className="space-y-2">
                           <button
-                            className="flex w-full items-center justify-between -mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:text-primary hover:bg-gray-800/60 transition-all duration-200"
+                            className="flex w-full items-center justify-between -mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
                             onClick={() =>
                               setMobileServicesOpen(!mobileServicesOpen)
                             }
@@ -234,9 +234,7 @@ export default function Navbar() {
                             {link.name}
                             <ChevronDown
                               className={`h-5 w-5 transition-transform duration-200 ${
-                                mobileServicesOpen
-                                  ? "rotate-180 text-primary"
-                                  : ""
+                                mobileServicesOpen ? "rotate-180" : ""
                               }`}
                             />
                           </button>
@@ -247,16 +245,16 @@ export default function Navbar() {
                                 <Link
                                   key={item.title}
                                   href={item.href}
-                                  className="flex flex-col -mx-3 rounded-lg px-3 py-2 text-base leading-7 text-gray-300 hover:bg-gray-800/60 hover:text-white transition-all duration-200 transform hover:translate-x-1"
+                                  className="flex flex-col -mx-3 rounded-lg px-3 py-2 text-base leading-7 text-white"
                                   onClick={() => {
                                     setMobileServicesOpen(false);
                                     setMobileMenuOpen(false);
                                   }}
                                 >
-                                  <span className="font-medium hover:text-primary transition-colors duration-200">
+                                  <span className="font-medium">
                                     {item.title}
                                   </span>
-                                  <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-200">
+                                  <span className="text-sm text-gray-400">
                                     {item.description}
                                   </span>
                                 </Link>
@@ -268,18 +266,18 @@ export default function Navbar() {
                         <Link
                           key={link.name}
                           href={link.href}
-                          className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:text-primary hover:bg-gray-800/60 transition-all duration-200 transform hover:translate-x-1"
+                          className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {link.name}
-                          <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                          <ChevronRight className="h-5 w-5" />
                         </Link>
                       )
                     )}
                     {isAdmin && (
                       <Link
                         href="/admin"
-                        className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-primary hover:text-primary/80 hover:bg-gray-800/60 transition-all duration-200 transform hover:translate-x-1"
+                        className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         Dashboard
@@ -290,25 +288,22 @@ export default function Navbar() {
                   <div className="py-6 px-4 flex flex-col gap-4">
                     {isSignedIn ? (
                       <div className="flex items-center gap-4">
-                        <span className="text-sm text-gray-300">
+                        <span className="text-sm text-white">
                           Hello, {user.firstName || "User"}
                         </span>
-                        <div className="transition-transform hover:scale-105 duration-200">
+                        <div>
                           <UserButton afterSignOutUrl="/" />
                         </div>
                       </div>
                     ) : (
                       <>
                         <SignInButton mode="modal">
-                          <Button
-                            variant="outline"
-                            className="w-full justify-center transition-transform duration-200 hover:scale-105 hover:shadow-md"
-                          >
+                          <Button className="w-full justify-center">
                             Sign In
                           </Button>
                         </SignInButton>
                         <Button
-                          className="w-full justify-center transition-transform duration-200 hover:scale-105 hover:shadow-md"
+                          className="w-full justify-center"
                           onClick={handleSignUpClick}
                         >
                           Sign Up

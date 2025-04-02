@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs";
+import { getAuth } from "@clerk/nextjs/server";
 import Blog from "@/models/Blog";
 
 export async function GET(request, { params }) {
@@ -22,7 +22,8 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
   try {
-    const { userId } = auth();
+    const { userId } = getAuth(request);
+    console.log("userId", userId);
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -102,12 +103,18 @@ export async function PUT(request, { params }) {
   }
 }
 
-export async function DELETE(request, { params }) {
+export async function DELETE(request, context) {
   try {
-    const { userId } = auth();
+    const { params } = context; // Extract params properly
+    const { userId } = getAuth(request);
+    console.log("userId", userId);
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    if (!params || !params.id) {
+      return NextResponse.json({ error: "Missing blog ID" }, { status: 400 });
     }
 
     const blog = await Blog.findById(params.id);
@@ -140,3 +147,4 @@ export async function DELETE(request, { params }) {
     );
   }
 }
+

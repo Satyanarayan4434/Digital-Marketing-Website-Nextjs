@@ -26,7 +26,6 @@ export default function DashboardLayout({ children }) {
     { name: "Blog Posts", href: "/admin/blogs", icon: FileText },
     { name: "Users", href: "/admin/users", icon: User },
     { name: "Messages", href: "/admin/messages", icon: Mail },
-    { name: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
   const isActive = (path) => pathname === path;

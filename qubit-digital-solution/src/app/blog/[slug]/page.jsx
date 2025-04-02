@@ -108,7 +108,7 @@ export default function BlogDetailPage() {
           </div>
         )}
 
-        <div className="prose prose-lg mt-8 max-w-none">
+        <div className="prose prose-lg mt-8 ">
           {/* Render blog content - in a real app, you might use a rich text renderer here */}
           <div
             dangerouslySetInnerHTML={{

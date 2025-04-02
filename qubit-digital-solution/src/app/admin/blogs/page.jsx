@@ -400,6 +400,7 @@ export default function BlogManagementPage() {
                       name="excerpt"
                       value={formData.excerpt}
                       onChange={handleChange}
+                      style={{ height: "70px" }}
                       className="col-span-3"
                     />
                   </div>
@@ -412,8 +413,7 @@ export default function BlogManagementPage() {
                       name="content"
                       value={formData.content}
                       onChange={handleChange}
-                      className="col-span-3"
-                      rows={10}
+                      className="col-span-3 h-[150px]"
                     />
                   </div>
                 </div>
@@ -707,6 +707,7 @@ export default function BlogManagementPage() {
                   name="excerpt"
                   value={formData.excerpt}
                   onChange={handleChange}
+                  style={{ height: "70px" }}
                   className="col-span-3"
                 />
               </div>
@@ -719,8 +720,7 @@ export default function BlogManagementPage() {
                   name="content"
                   value={formData.content}
                   onChange={handleChange}
-                  className="col-span-3"
-                  rows={10}
+                  className="col-span-3 h-[150px]"
                 />
               </div>
             </div>

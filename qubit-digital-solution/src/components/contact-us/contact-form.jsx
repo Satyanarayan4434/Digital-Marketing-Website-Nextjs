@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -13,34 +12,60 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 
 export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
+    NavigationMenu: "",
+    phone: "",
     email: "",
-    website: "",
-    companySize: "",
-    country: "",
-    referral: "",
     message: "",
-    privacyPolicy: false,
-    isSubmitting: false,
-    isSubmitted: false,
+    serviceType: "other",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormState((prev) => ({ ...prev, isSubmitting: true }));
+    setIsSubmitting(true);
+    console.log("Form submitted:", formState);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      const data = await response.json();
 
-    setFormState((prev) => ({
-      ...prev,
-      isSubmitting: false,
-      isSubmitted: true,
-    }));
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      toast({
+        title: "Message sent!",
+        description:
+          "Your message has been sent successfully. We'll get back to you soon.",
+        variant: "success",
+      });
+
+      setFormState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        serviceType: "other",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+      console.error("Contact form error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -77,13 +102,13 @@ export default function ContactForm() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label htmlFor="firstName" className="block text-sm text-gray-400">
-            First name
+          <label htmlFor="name" className="block text-sm text-gray-400">
+            Name
           </label>
           <Input
-            id="firstName"
-            name="firstName"
-            value={formState.firstName}
+            id="name"
+            name="name"
+            value={formState.name}
             onChange={handleChange}
             placeholder="John"
             required
@@ -92,15 +117,15 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="lastName" className="block text-sm text-gray-400">
-            Last name
+          <label htmlFor="phone" className="block text-sm text-gray-400">
+            Phone
           </label>
           <Input
-            id="lastName"
-            name="lastName"
-            value={formState.lastName}
+            id="phone"
+            name="phone"
+            value={formState.phone}
             onChange={handleChange}
-            placeholder="Smith"
+            placeholder="123-456-7891"
             required
             className="bg-black/50 border-gray-600 focus:border-blue-500"
           />
@@ -108,7 +133,7 @@ export default function ContactForm() {
 
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm text-gray-400">
-            Work email
+            Email
           </label>
           <Input
             id="email"
@@ -123,30 +148,32 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-2 w-full">
-          <label htmlFor="companySize" className="block text-sm text-gray-400">
+          <label htmlFor="serviceType" className="block text-sm text-gray-400">
             Services
           </label>
           <Select
-            value={formState.companySize}
+            value={formState.serviceType}
             onValueChange={(value) =>
-              setFormState((prev) => ({ ...prev, companySize: value }))
+              setFormState((prev) => ({ ...prev, serviceType: value }))
             }
           >
             <SelectTrigger className="w-full bg-black/50 border border-gray-600 focus:border-blue-500 text-gray-300">
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent className="bg-gray-900 border border-gray-600 text-white">
-              <SelectItem value="Brand-Strategy">Brand Strategy</SelectItem>
-              <SelectItem value="Designing">Designing</SelectItem>
-              <SelectItem value="Digital-Marketing">
+              <SelectItem value="brand-strategy">Brand Strategy</SelectItem>
+              <SelectItem value="creative-designing">
+                Creative Designing
+              </SelectItem>
+              <SelectItem value="digital-marketing">
                 Digital Marketing
               </SelectItem>
-              <SelectItem value="Web-Development">Web Development</SelectItem>
+              <SelectItem value="web-development">Web Development</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
-        <div className="space-y-2 md:col-span-2">
+        {/* <div className="space-y-2 md:col-span-2">
           <label htmlFor="referral" className="block text-sm text-gray-400">
             How did you find us?
           </label>
@@ -158,7 +185,7 @@ export default function ContactForm() {
             placeholder="Recommended by a friend..."
             className="bg-black/50 border-gray-600 focus:border-blue-500"
           />
-        </div>
+        </div> */}
 
         <div className="space-y-2 md:col-span-2">
           <label htmlFor="message" className="block text-sm text-gray-400">
