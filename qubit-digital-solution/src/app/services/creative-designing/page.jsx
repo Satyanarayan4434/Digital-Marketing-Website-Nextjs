@@ -1,371 +1,261 @@
 "use client";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Palette, Image, Layout, Film, PenTool, Layers } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Palette, Layout, Film, PenTool, Layers, ArrowUpRight } from "lucide-react";
 import QueryModal from "@/components/services/query-modal";
-import {
-  BorderBeam,
-  MagicCard,
-  DotPattern,
-  IconCloud,
-  TestimonialCard,
-} from "@/components/services/ui-elements";
-import PricingSection from "@/components/services/pricing";
+import { BorderBeam, DotPattern } from "@/components/services/ui-elements";
+import PricingSection from "@/components/home/PricingSection";
 
 export default function CreativeDesigningPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const icons = [
-    <Palette key="palette" size={32} className="text-blue-400" />,
-    <Image key="image1" size={32} className="text-purple-400" />,
-    <Layout key="layout1" size={32} className="text-blue-400" />,
-    <Image key="image2" size={32} className="text-purple-400" />,
-    <Layout key="layout2" size={32} className="text-blue-400" />,
-    <Film key="film" size={32} className="text-purple-400" />,
-    <PenTool key="pentool" size={32} className="text-blue-400" />,
-    <Layers key="layers" size={32} className="text-purple-400" />,
-  ];
-
   return (
-    <div className="min-h-screen bg-[#EFEFF0] text-white">
+    <div className="min-h-screen bg-[#040406] text-[#b2b4bd] overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-[url('/assets/Group.png')] bg-center  overflow-hidden bg-no-repeat min-h-[500px] w-full bg-black lg:pb-28">
-        <div className="container flex flex-col max-w-7xl mx-auto px-4">
+      <section className="relative bg-[url('/assets/Group.png')] bg-cover bg-no-repeat">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className=""
+            transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-gray-300 py-5 lg:py-10">
-              Creative Designing Agency
-            </h1>
-            <div className="flex flex-wrap gap-8 ">
-              <img
-                src="/services/Design.webp"
-                alt="Web Development"
-                className="lg:w-[49%] rounded-lg"
-              />
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="lg:w-1/2"
+              >
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                  Visual Innovation
+                  <span className="block bg-gradient-to-r from-[#f18252] to-[#d46a38] bg-clip-text text-transparent mt-4">
+                    Qubit Creative Studio
+                  </span>
+                </h1>
+                <p className="text-lg leading-relaxed mb-8">
+                  Transforming brand visions into captivating visual experiences through 
+                  strategic design thinking and cutting-edge digital artistry.
+                </p>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 text-[#f18252] group"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <span className="font-medium">Start Creative Project</span>
+                  <ArrowUpRight className="transition-transform group-hover:rotate-45" />
+                </motion.button>
+              </motion.div>
 
-              <div className="flex flex-col justify-center items-center gap-4 lg:w-[45%] text-gray-300">
-                <p>
-                  Our design and communication teams are adept at transforming
-                  your requirements into reality. Be it crafting a brand
-                  identity, packaging, translating your positioning into
-                  effective communication tools, making a corporate tool, or the
-                  perfect presentation, point of sale designs or print ads, our
-                  team is here for all your communication requirements. At
-                  PromotEdge, a leading creative agency, we use the best of our
-                  talent to create thought-provoking creatives that positively
-                  impact our client’s business. We derive our communications
-                  from insights and data-backed research, ensuring memorable
-                  visual elements that stand out amidst the clutter and leave a
-                  lasting impact.
-                </p>
-                <p>
-                  We have a collaborative approach where we put our team with
-                  the clients to understand the vision, mood board, and goal and
-                  then execute and deliver not only captive but also tangible
-                  results. As a creative agency, we derive our communications
-                  from insights and data-backed research, ensuring memorable
-                  visual elements that stand out amidst the clutter and leave a
-                  lasting impact. Embracing the art of simplicity, our goal is
-                  to deliver impactful communication assets through a
-                  straightforward approach in every creation.
-                </p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+                className="lg:w-1/2 relative"
+              >
+                <div className="relative h-96 rounded-3xl overflow-hidden border-2 border-[#2b2b44] shadow-2xl">
+                  <img
+                    src="/services/Design.webp"
+                    alt="Creative Design Process"
+                    className="w-full h-full object-cover"
+                  />
+                  <BorderBeam size={250} />
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Creative Design Services
+      {/* Core Services */}
+      <section className="py-20 bg-[#0f0f18]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Design Specializations
             </h2>
-            <p className="text-gray-300">
-              Comprehensive design solutions to help your business make a
-              lasting impression.
+            <p className="text-[#f18252] max-w-2xl mx-auto">
+              Holistic design solutions for digital and physical experiences
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <BorderBeam>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Palette size={32} className="text-blue-400" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Palette className="w-8 h-8" />,
+                title: "Brand Identity Systems",
+                content: "Comprehensive visual identity development with multi-platform adaptability"
+              },
+              {
+                icon: <Layout className="w-8 h-8" />,
+                title: "Digital Experience Design",
+                content: "Immersive UI/UX solutions for web, mobile, and interactive platforms"
+              },
+              {
+                icon: <Film className="w-8 h-8" />,
+                title: "Motion & Animation",
+                content: "Dynamic motion graphics and micro-interactions for enhanced engagement"
+              },
+              {
+                icon: <PenTool className="w-8 h-8" />,
+                title: "Custom Illustration",
+                content: "Bespoke artwork and iconography that defines brand personality"
+              },
+              {
+                icon: <Layers className="w-8 h-8" />,
+                title: "3D Visualization",
+                content: "Photorealistic product rendering and environmental modeling"
+              },
+              {
+                icon: <Layout className="w-8 h-8" />,
+                title: "Print & Packaging",
+                content: "Tangible design solutions with sustainable material integration"
+              }
+            ].map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.15 }}
+                className="p-8 rounded-2xl border border-[#2b2b44] hover:border-[#f18252] transition-all group"
+              >
+                <div className="text-[#f18252] mb-4">{service.icon}</div>
+                <h3 className="text-xl text-white mb-3">{service.title}</h3>
+                <p className="text-[#b2b4bd]">{service.content}</p>
+                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowUpRight className="text-[#f18252]" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Brand Identity Design
-                </h3>
-                <p className="text-gray-300">
-                  Create a cohesive visual identity including logos, color
-                  palettes, typography, and brand guidelines.
-                </p>
-              </div>
-            </BorderBeam>
-
-            <BorderBeam>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Layout size={32} className="text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">UI/UX Design</h3>
-                <p className="text-gray-300">
-                  Create intuitive, engaging user interfaces and experiences for
-                  websites, apps, and digital products.
-                </p>
-              </div>
-            </BorderBeam>
-
-            <BorderBeam>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Image size={32} className="text-blue-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Print & Packaging Design
-                </h3>
-                <p className="text-gray-300">
-                  Design eye-catching marketing materials, product packaging,
-                  and other physical brand assets.
-                </p>
-              </div>
-            </BorderBeam>
-
-            <BorderBeam>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Film size={32} className="text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Motion Graphics</h3>
-                <p className="text-gray-300">
-                  Create animated videos, explainers, and dynamic visual content
-                  that brings your brand to life.
-                </p>
-              </div>
-            </BorderBeam>
-
-            <BorderBeam>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <PenTool size={32} className="text-blue-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Illustration & Iconography
-                </h3>
-                <p className="text-gray-300">
-                  Custom illustrations and icon sets that enhance your visual
-                  storytelling and brand personality.
-                </p>
-              </div>
-            </BorderBeam>
-
-            <BorderBeam>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Layers size={32} className="text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  3D Design & Visualization
-                </h3>
-                <p className="text-gray-300">
-                  Create immersive 3D models, product renderings, and
-                  visualizations that showcase your offerings.
-                </p>
-              </div>
-            </BorderBeam>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Creative Process
+      {/* Design Process */}
+      <section className="py-20 relative">
+        <DotPattern className="opacity-20" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Our Design Methodology
             </h2>
-            <p className="text-gray-300">
-              A structured approach that delivers exceptional design results
-              every time.
+            <p className="text-[#f18252] max-w-2xl mx-auto">
+              Structured creativity delivering measurable brand impact
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <MagicCard>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold">1</span>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Discovery & Strategy",
+                content: "Market analysis and creative direction planning",
+                color: "from-[#f18252] to-[#d46a38]"
+              },
+              {
+                title: "Concept Development",
+                content: "Visual ideation and prototype creation",
+                color: "from-[#2b2b44] to-[#1a1a24]"
+              },
+              {
+                title: "Design Execution",
+                content: "Pixel-perfect implementation across mediums",
+                color: "from-[#2b2b44] to-[#1a1a24]"
+              },
+              {
+                title: "Delivery & Support",
+                content: "Asset optimization and brand governance",
+                color: "from-[#f18252] to-[#d46a38]"
+              }
+            ].map((stage, i) => (
+              <motion.div
+                key={i}
+                initial={{ scale: 0.9 }}
+                whileInView={{ scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                className={`bg-gradient-to-br ${stage.color} p-0.5 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow`}
+              >
+                <div className="bg-[#040406] rounded-2xl p-8 h-full">
+                  <div className="text-[#f18252] text-lg font-semibold mb-2">
+                    0{i+1}
+                  </div>
+                  <h3 className="text-xl text-white mb-3">{stage.title}</h3>
+                  <p className="text-[#b2b4bd]">{stage.content}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Discovery</h3>
-                <p className="text-gray-300">
-                  We learn about your business, goals, audience, and competition
-                  to inform our design strategy.
-                </p>
-              </div>
-            </MagicCard>
-
-            <MagicCard>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold">2</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Concept</h3>
-                <p className="text-gray-300">
-                  We develop initial design concepts and creative directions
-                  based on our research findings.
-                </p>
-              </div>
-            </MagicCard>
-
-            <MagicCard>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold">3</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Refinement</h3>
-                <p className="text-gray-300">
-                  We iterate on the selected concept, refining every detail
-                  until the design is perfect.
-                </p>
-              </div>
-            </MagicCard>
-
-            <MagicCard>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold">4</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">Delivery</h3>
-                <p className="text-gray-300">
-                  We provide final design assets in all required formats, along
-                  with guidelines for implementation.
-                </p>
-              </div>
-            </MagicCard>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Tools Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Design Tools & Technologies
+      {/* Portfolio Showcase */}
+      <section className="py-20 bg-[#0f0f18]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Design Innovations
             </h2>
-            <p className="text-gray-300">
-              We use industry-leading tools and technologies to create
-              exceptional designs.
+            <p className="text-[#f18252] max-w-2xl mx-auto">
+              Where strategic thinking meets visual excellence
             </p>
-          </div>
+          </motion.div>
 
-          <IconCloud icons={icons} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="group relative overflow-hidden rounded-2xl"
+              >
+                <div className="aspect-square bg-[#2b2b44] rounded-2xl transition-transform group-hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end">
+                    <h3 className="text-xl text-white mb-2">Project Title</h3>
+                    <p className="text-[#b2b4bd] text-sm">Brand Identity</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <PricingSection
-        title="Design Service Packages"
-        description="Flexible options to meet your creative design needs and budget."
-        packages={[
-          {
-            title: "Essential Design",
-            price: "1,499",
-            features: [
-              "Logo Design",
-              "Brand Color Palette",
-              "Typography Selection",
-              "Basic Brand Guidelines",
-              "2 Rounds of Revisions",
-              "Source Files Included",
-            ],
-            popular: false,
-          },
-          {
-            title: "Premium Design",
-            price: "3,499",
-            features: [
-              "Everything in Essential Package",
-              "Extended Brand Guidelines",
-              "Social Media Templates",
-              "Business Card & Stationery",
-              "Marketing Collateral Design",
-              "3 Rounds of Revisions",
-              "Ongoing Design Support (1 month)",
-            ],
-            popular: true,
-          },
-          {
-            title: "Enterprise Design",
-            price: "Custom",
-            features: [
-              "Comprehensive Brand Identity",
-              "UI/UX Design for Web & Mobile",
-              "Custom Illustration & Iconography",
-              "Motion Graphics & Animation",
-              "Print & Packaging Design",
-              "Unlimited Revisions",
-              "Dedicated Design Team",
-            ],
-            popular: false,
-          },
-        ]}
-      />
+      <PricingSection />
 
       {/* CTA Section */}
-      <section className="bg-[url('/assets/Group.png')] py-20 bg-center lg:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold mb-4"
-            >
-              Ready to Elevate Your Brand's Visual Identity?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-lg text-gray-300 mb-14"
-            >
-              Let's create designs that captivate your audience and drive
-              business results.
-            </motion.p>
-            <motion.div
+      <section className="bg-[url('/assets/Group.png')] bg-cover py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ scale: 0.95 }}
+            whileInView={{ scale: 1 }}
+            className="bg-gradient-to-r from-[#040406]/90 to-[#0f0f18]/90 backdrop-blur-xl rounded-3xl p-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Transform Your Visual Presence?
+            </h2>
+            <motion.button
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
+              className="bg-[#f18252] text-white px-8 py-4 rounded-xl font-medium flex items-center gap-2 mx-auto hover:bg-[#d46a38] transition-colors"
+              onClick={() => setIsModalOpen(true)}
             >
-              <div className="relative w-full md:w-auto">
-                <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  type="submit"
-                  className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
-                >
-                  Schedule a Design Consultation
-                </button>
-              </div>
-            </motion.div>
-          </div>
+              Initiate Design Collaboration
+              <ArrowUpRight className="text-xl" />
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Query Modal */}
       <QueryModal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}

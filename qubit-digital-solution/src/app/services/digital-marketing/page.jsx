@@ -18,11 +18,11 @@ import {
   IconCloud,
   TestimonialCard,
 } from "@/components/services/ui-elements";
-import PricingSection from "@/components/services/pricing";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import CountUp from "@/components/services/countUp";
 import FAQSection from "@/components/services/faq-section";
+import PricingSection from "@/components/home/PricingSection"
 
 export default function DigitalMarketingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -472,53 +472,7 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Pricing Section */}
-      <PricingSection
-        title="Digital Marketing Packages"
-        description="Flexible options to meet your marketing needs and budget."
-        bgWhite={true}
-        packages={[
-          {
-            title: "Starter Package",
-            price: "999",
-            features: [
-              "SEO Audit & Optimization",
-              "Google Business Profile Setup",
-              "Basic Social Media Management",
-              "Monthly Performance Report",
-              "Email Support",
-            ],
-            popular: false,
-          },
-          {
-            title: "Growth Package",
-            price: "2,499",
-            features: [
-              "Everything in Starter Package",
-              "Comprehensive SEO Strategy",
-              "PPC Campaign Management",
-              "Content Marketing",
-              "Advanced Social Media Strategy",
-              "Email Marketing Campaigns",
-              "Bi-weekly Strategy Calls",
-            ],
-            popular: true,
-          },
-          {
-            title: "Enterprise Package",
-            price: "4,999",
-            features: [
-              "Everything in Growth Package",
-              "Custom Marketing Strategy",
-              "Conversion Rate Optimization",
-              "Marketing Automation",
-              "Competitor Analysis",
-              "Advanced Analytics & Reporting",
-              "Dedicated Account Manager",
-            ],
-            popular: false,
-          },
-        ]}
-      />
+      <PricingSection/>
 
       {/* CTA Section */}
       <section className="bg-[url('/assets/Group.png')] py-20 bg-center md:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
