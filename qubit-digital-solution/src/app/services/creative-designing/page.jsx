@@ -5,6 +5,7 @@ import { Palette, Layout, Film, PenTool, Layers, ArrowUpRight } from "lucide-rea
 import QueryModal from "@/components/services/query-modal";
 import { BorderBeam, DotPattern } from "@/components/services/ui-elements";
 import PricingSection from "@/components/home/PricingSection";
+import Link from "next/link";
 
 export default function CreativeDesigningPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,8 +34,9 @@ export default function CreativeDesigningPage() {
                   </span>
                 </h1>
                 <p className="text-lg leading-relaxed mb-8">
-                  Transforming brand visions into captivating visual experiences through 
-                  strategic design thinking and cutting-edge digital artistry.
+                  Transforming brand visions into captivating visual experiences
+                  through strategic design thinking and cutting-edge digital
+                  artistry.
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -87,33 +89,39 @@ export default function CreativeDesigningPage() {
               {
                 icon: <Palette className="w-8 h-8" />,
                 title: "Brand Identity Systems",
-                content: "Comprehensive visual identity development with multi-platform adaptability"
+                content:
+                  "Comprehensive visual identity development with multi-platform adaptability",
               },
               {
                 icon: <Layout className="w-8 h-8" />,
                 title: "Digital Experience Design",
-                content: "Immersive UI/UX solutions for web, mobile, and interactive platforms"
+                content:
+                  "Immersive UI/UX solutions for web, mobile, and interactive platforms",
               },
               {
                 icon: <Film className="w-8 h-8" />,
                 title: "Motion & Animation",
-                content: "Dynamic motion graphics and micro-interactions for enhanced engagement"
+                content:
+                  "Dynamic motion graphics and micro-interactions for enhanced engagement",
               },
               {
                 icon: <PenTool className="w-8 h-8" />,
                 title: "Custom Illustration",
-                content: "Bespoke artwork and iconography that defines brand personality"
+                content:
+                  "Bespoke artwork and iconography that defines brand personality",
               },
               {
                 icon: <Layers className="w-8 h-8" />,
                 title: "3D Visualization",
-                content: "Photorealistic product rendering and environmental modeling"
+                content:
+                  "Photorealistic product rendering and environmental modeling",
               },
               {
                 icon: <Layout className="w-8 h-8" />,
                 title: "Print & Packaging",
-                content: "Tangible design solutions with sustainable material integration"
-              }
+                content:
+                  "Tangible design solutions with sustainable material integration",
+              },
             ].map((service, i) => (
               <motion.div
                 key={i}
@@ -156,23 +164,23 @@ export default function CreativeDesigningPage() {
               {
                 title: "Discovery & Strategy",
                 content: "Market analysis and creative direction planning",
-                color: "from-[#f18252] to-[#d46a38]"
+                color: "from-[#f18252] to-[#d46a38]",
               },
               {
                 title: "Concept Development",
                 content: "Visual ideation and prototype creation",
-                color: "from-[#2b2b44] to-[#1a1a24]"
+                color: "from-[#2b2b44] to-[#1a1a24]",
               },
               {
                 title: "Design Execution",
                 content: "Pixel-perfect implementation across mediums",
-                color: "from-[#2b2b44] to-[#1a1a24]"
+                color: "from-[#2b2b44] to-[#1a1a24]",
               },
               {
                 title: "Delivery & Support",
                 content: "Asset optimization and brand governance",
-                color: "from-[#f18252] to-[#d46a38]"
-              }
+                color: "from-[#f18252] to-[#d46a38]",
+              },
             ].map((stage, i) => (
               <motion.div
                 key={i}
@@ -183,7 +191,7 @@ export default function CreativeDesigningPage() {
               >
                 <div className="bg-[#040406] rounded-2xl p-8 h-full">
                   <div className="text-[#f18252] text-lg font-semibold mb-2">
-                    0{i+1}
+                    0{i + 1}
                   </div>
                   <h3 className="text-xl text-white mb-3">{stage.title}</h3>
                   <p className="text-[#b2b4bd]">{stage.content}</p>
@@ -244,23 +252,29 @@ export default function CreativeDesigningPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Transform Your Visual Presence?
             </h2>
+            <Link href="/contact">
+              <button
+                type="submit"
+                className="bg-[#f18252] text-white px-8 py-4 rounded-xl font-medium flex items-center gap-2 mx-auto hover:bg-[#d46a38] transition-colors"
+              >
+                Initiate Design Collaboration
+              </button>
+            </Link>
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="bg-[#f18252] text-white px-8 py-4 rounded-xl font-medium flex items-center gap-2 mx-auto hover:bg-[#d46a38] transition-colors"
               onClick={() => setIsModalOpen(true)}
             >
-              Initiate Design Collaboration
               <ArrowUpRight className="text-xl" />
             </motion.button>
           </motion.div>
         </div>
       </section>
 
-      <QueryModal
+      {/* <QueryModal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
         serviceName="Creative Design Services"
-      />
+      /> */}
     </div>
   );
 }

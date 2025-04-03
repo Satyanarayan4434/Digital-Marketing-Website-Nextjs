@@ -22,7 +22,8 @@ import { DotPattern } from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import CountUp from "@/components/services/countUp";
 import FAQSection from "@/components/services/faq-section";
-import PricingSection from "@/components/home/PricingSection"
+import PricingSection from "@/components/home/PricingSection";
+import Link from "next/link";
 
 export default function DigitalMarketingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -472,7 +473,7 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Pricing Section */}
-      <PricingSection/>
+      <PricingSection />
 
       {/* CTA Section */}
       <section className="bg-[url('/assets/Group.png')] py-20 bg-center md:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
@@ -507,13 +508,14 @@ export default function DigitalMarketingPage() {
             >
               <div className="relative w-full md:w-auto">
                 <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  type="submit"
-                  className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
-                >
-                  Get Your Free Marketing Audit
-                </button>
+                <Link href="/contact">
+                  <button
+                    type="submit"
+                    className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
+                  >
+                    Get Your Free Marketing Audit
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -521,11 +523,11 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Query Modal */}
-      <QueryModal
+      {/* <QueryModal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
         serviceName="Digital Marketing Services"
-      />
+      /> */}
 
       {/* FAQ Section */}
       <FAQSection />

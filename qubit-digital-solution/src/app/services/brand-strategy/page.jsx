@@ -5,6 +5,7 @@ import { FiCheck, FiUsers, FiTrendingUp, FiGlobe, FiArrowUpRight } from "react-i
 import QueryModal from "@/components/services/query-modal";
 import { BorderBeam, DotPattern, TestimonialCard } from "@/components/services/ui-elements";
 import PricingSection from "@/components/home/PricingSection";
+import Link from "next/link";
 
 
 export default function BrandStrategyPage() {
@@ -29,7 +30,7 @@ export default function BrandStrategyPage() {
                 Qubit Digital Solution
               </span>
             </h1>
-            
+
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -46,9 +47,10 @@ export default function BrandStrategyPage() {
 
               <div className="space-y-6 text-lg">
                 <p className="text-[#b2b4bd] leading-relaxed">
-                  At Qubit Digital Solution, we architect market-dominant brand ecosystems through 
-                  data-driven insights and innovative digital strategies. Our full-spectrum approach 
-                  combines analytical rigor with creative excellence to position brands for 
+                  At Qubit Digital Solution, we architect market-dominant brand
+                  ecosystems through data-driven insights and innovative digital
+                  strategies. Our full-spectrum approach combines analytical
+                  rigor with creative excellence to position brands for
                   sustainable growth in dynamic digital landscapes.
                 </p>
                 <div className="flex items-center gap-2 text-[#f18252] font-medium hover:text-[#d46a38] transition-colors">
@@ -79,21 +81,22 @@ export default function BrandStrategyPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
+              {
                 icon: <FiTrendingUp className="text-3xl" />,
                 title: "Market Positioning",
-                content: "Algorithmic market analysis for optimal brand positioning"
+                content:
+                  "Algorithmic market analysis for optimal brand positioning",
               },
-              { 
+              {
                 icon: <FiUsers className="text-3xl" />,
                 title: "Audience Architecture",
-                content: "Deep-learning powered consumer behavior modeling"
+                content: "Deep-learning powered consumer behavior modeling",
               },
-              { 
+              {
                 icon: <FiGlobe className="text-3xl" />,
                 title: "Omnichannel Strategy",
-                content: "Integrated cross-platform brand experience design"
-              }
+                content: "Integrated cross-platform brand experience design",
+              },
             ].map((service, i) => (
               <motion.div
                 key={i}
@@ -130,10 +133,22 @@ export default function BrandStrategyPage() {
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { title: "Discovery Audit", color: "from-[#f18252] to-[#d46a38]" },
-              { title: "Strategy Formulation", color: "from-[#2b2b44] to-[#1a1a24]" },
-              { title: "Experience Design", color: "from-[#2b2b44] to-[#1a1a24]" },
-              { title: "Market Activation", color: "from-[#f18252] to-[#d46a38]" }
+              {
+                title: "Discovery Audit",
+                color: "from-[#f18252] to-[#d46a38]",
+              },
+              {
+                title: "Strategy Formulation",
+                color: "from-[#2b2b44] to-[#1a1a24]",
+              },
+              {
+                title: "Experience Design",
+                color: "from-[#2b2b44] to-[#1a1a24]",
+              },
+              {
+                title: "Market Activation",
+                color: "from-[#f18252] to-[#d46a38]",
+              },
             ].map((stage, i) => (
               <motion.div
                 key={i}
@@ -144,7 +159,7 @@ export default function BrandStrategyPage() {
               >
                 <div className="bg-[#040406] rounded-2xl p-6 h-full">
                   <div className="text-[#f18252] text-lg font-semibold mb-2">
-                    0{i+1}
+                    0{i + 1}
                   </div>
                   <h3 className="text-xl text-white">{stage.title}</h3>
                 </div>
@@ -155,7 +170,7 @@ export default function BrandStrategyPage() {
       </section>
 
       {/* Pricing Section */}
-      <PricingSection/>
+      <PricingSection />
 
       {/* CTA Section */}
       <section className="bg-[url('/assets/Group.png')] bg-cover py-32">
@@ -168,24 +183,28 @@ export default function BrandStrategyPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready for Digital Market Leadership?
             </h2>
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#f18252] text-white px-8 py-4 rounded-xl font-medium flex items-center gap-2 mx-auto hover:bg-[#d46a38] transition-all"
-              onClick={() => setIsModalOpen(true)}
+              className="mx-auto"
             >
-              Initiate Brand Transformation
-              <FiArrowUpRight className="text-xl" />
-            </motion.button>
+              <Link
+                href="/contact"
+                className="bg-[#f18252] text-white px-8 py-4 rounded-xl font-medium flex items-center gap-2 hover:bg-[#d46a38] transition-all"
+              >
+                Initiate Brand Transformation
+                <FiArrowUpRight className="text-xl" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <QueryModal
+      {/* <QueryModal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
         serviceName="Digital Brand Strategy Services"
-      />
+      /> */}
     </div>
   );
 }

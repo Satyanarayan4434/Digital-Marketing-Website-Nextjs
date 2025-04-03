@@ -16,6 +16,7 @@ import { IconCloud } from "@/components/magicui/icon-cloud";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import { ShineBorder } from "@/components/magicui/shine-border";
+import Link from "next/link";
 
 const slugs = [
   "typescript",
@@ -234,7 +235,7 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* Pricing Section */}
-      <PricingSection/>
+      <PricingSection />
 
       {/* CTA Section */}
       <section className="bg-[url('/assets/Group.png')] py-20 bg-center md:bg-[length:190%] bg-no-repeat min-h-[500px] w-full overflow-y-auto flex flex-col justify-center">
@@ -250,24 +251,25 @@ export default function WebDevelopmentPage() {
 
             <div className="relative w-full md:w-auto">
               <div className="absolute z-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-orange-500 rounded-full opacity-20 blur-xl transition-all"></div>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                type="submit"
-                className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
-              >
-                Schedule a Consultation
-              </button>
+              <Link href="/contact">
+                <button
+                  type="submit"
+                  className="relative z-10 w-full md:w-auto px-16 py-3 bg-black rounded-full text-white text-lg border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400"
+                >
+                  Schedule a Consultation
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Query Modal */}
-      <QueryModal
+      {/* <QueryModal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
         serviceName="Web Development Services"
-      />
+      /> */}
     </div>
   );
 }
