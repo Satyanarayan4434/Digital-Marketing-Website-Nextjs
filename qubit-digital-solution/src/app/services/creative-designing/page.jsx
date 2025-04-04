@@ -1,7 +1,15 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Palette, Layout, Film, PenTool, Layers, ArrowUpRight } from "lucide-react";
+import {ChevronRight} from "lucide-react";
+import {
+  Palette,
+  Layout,
+  Film,
+  PenTool,
+  Layers,
+  ArrowUpRight,
+} from "lucide-react";
 import QueryModal from "@/components/services/query-modal";
 import { BorderBeam, DotPattern } from "@/components/services/ui-elements";
 import PricingSection from "@/components/home/PricingSection";
@@ -201,37 +209,106 @@ export default function CreativeDesigningPage() {
           </div>
         </div>
       </section>
-
-      {/* Portfolio Showcase */}
-      <section className="py-20 bg-[#0f0f18]">
+      
+      {/* Projects Showcase Section */}
+      <section className="py-16 md:py-24 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Design Innovations
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent mb-4">
+              Featured Projects
             </h2>
-            <p className="text-[#f18252] max-w-2xl mx-auto">
-              Where strategic thinking meets visual excellence
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Pioneering solutions that redefine industry standards
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "FinTech Dashboard",
+                description:
+                  "Real-time financial analytics platform with predictive insights",
+                tech: ["React", "TypeScript", "D3.js", "Node.js"],
+                delay: 0.1,
+              },
+              {
+                name: "EcoTrack System",
+                description:
+                  "Sustainability monitoring for enterprise operations",
+                tech: ["IoT", "Python", "AWS", "React Native"],
+                delay: 0.3,
+              },
+              {
+                name: "MediSecure Platform",
+                description: "HIPAA-compliant healthcare data management",
+                tech: ["Kotlin", "Blockchain", "Kubernetes", "Next.js"],
+                delay: 0.5,
+              },
+            ].map((project, index) => (
               <motion.div
-                key={item}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                className="group relative overflow-hidden rounded-2xl"
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)",
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  delay: project.delay,
+                }}
+                viewport={{ once: true }}
+                className="bg-gray-900 rounded-xl p-6 shadow-2xl border border-gray-800"
               >
-                <div className="aspect-square bg-[#2b2b44] rounded-2xl transition-transform group-hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end">
-                    <h3 className="text-xl text-white mb-2">Project Title</h3>
-                    <p className="text-[#b2b4bd] text-sm">Brand Identity</p>
-                  </div>
+                <div className="mb-4">
+                  <motion.div
+                    className="h-48 bg-gray-800 rounded-lg mb-4 overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="h-full w-full bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center">
+                      <span className="text-2xl text-primary font-bold">
+                        {"{}"}
+                      </span>
+                    </div>
+                  </motion.div>
+
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    {project.name}
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    {project.description}
+                  </p>
                 </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ delay: 0.1 * i }}
+                      className="text-xs px-3 py-1 bg-gray-800 rounded-full text-gray-300"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className="mt-6 flex items-center gap-2 group cursor-pointer"
+                >
+                  <span className="text-primary font-semibold text-sm">
+                    View Details
+                  </span>
+                  <ChevronRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -240,7 +317,7 @@ export default function CreativeDesigningPage() {
 
       {/* Pricing Section */}
       <PricingSection />
-
+      
       {/* CTA Section */}
       <section className="bg-[url('/assets/Group.png')] bg-cover py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -269,7 +346,6 @@ export default function CreativeDesigningPage() {
           </motion.div>
         </div>
       </section>
-
       {/* <QueryModal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}

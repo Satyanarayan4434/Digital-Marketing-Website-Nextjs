@@ -111,7 +111,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div className="space-y-4">
+              {/* <div className="space-y-4">
                 <p className="text-sm text-gray-400">
                   Shaping developer experiences for the future
                 </p>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                     height={30}
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="relative">

@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 import {
   FiCheck,
   FiArrowUpRight,
@@ -136,77 +137,95 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="px-6 lg:px-20 py-20 relative z-10">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-gray-950">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Visionary Leaders
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-center mb-12 lg:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-orange-300 bg-clip-text text-transparent mb-4">
+              Our Leadership
             </h2>
-            <p className="text-[#b2b4bd] max-w-2xl mx-auto">
-              The masterminds behind digital revolutions
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Guiding innovation with expertise and vision
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                name: "Sarah Chen",
-                role: "Creative Director",
+                name: "Satyanarayan Sen",
+                role: "Founder & Director",
                 image: "/assets/team-1.svg",
-                shadow: "shadow-[0_20px_40px_-10px_rgba(241,130,82,0.15)]",
+                color: "from-primary/20 to-primary/5",
               },
               {
-                name: "Raj Patel",
-                role: "SEO Growth Lead",
+                name: "Priyanka Chatterjee",
+                role: "CTO",
                 image: "/assets/team-2.svg",
-                shadow: "shadow-[0_20px_40px_-10px_rgba(66,153,225,0.15)]",
+                color: "from-blue-400/20 to-blue-400/5",
               },
               {
-                name: "Emily Wilson",
-                role: "UX Strategist",
+                name: "Arjun Mehra",
+                role: "Creative Head",
                 image: "/assets/team-3.svg",
-                shadow: "shadow-[0_20px_40px_-10px_rgba(139,92,246,0.15)]",
+                color: "from-purple-500/20 to-purple-500/5",
               },
               {
-                name: "Michael Ho",
-                role: "Data Architect",
+                name: "Nandini Roy",
+                role: "Strategy Director",
                 image: "/assets/team-4.svg",
-                shadow: "shadow-[0_20px_40px_-10px_rgba(16,185,129,0.15)]",
+                color: "from-green-400/20 to-green-400/5",
               },
             ].map((member, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                className="group relative overflow-hidden rounded-2xl transform transition-all duration-500 hover:-translate-y-2"
+                transition={{ delay: i * 0.15, duration: 0.5 }}
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                className="group relative overflow-hidden rounded-xl"
               >
                 <div
-                  className={`absolute inset-0 ${member.shadow} transition-shadow duration-300`}
+                  className={`absolute inset-0 bg-gradient-to-b ${member.color} z-10`}
                 />
 
-                <div className="h-96 rounded-2xl overflow-hidden relative">
+                <div className="relative h-80 rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transform transition-all duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-top"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+                    priority={i === 0}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent p-6 flex flex-col justify-end">
-                    <div className="border-l-2 border-[#f18252] pl-4">
-                      <h3 className="text-xl font-semibold text-white mb-1">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end"
+                    initial={{ opacity: 1 }}
+                    whileHover={{ opacity: 0.9 }}
+                  >
+                    <div className="border-l-2 border-primary pl-4">
+                      <h3 className="text-xl font-bold text-white mb-1">
                         {member.name}
                       </h3>
-                      <p className="text-sm text-[#b2b4bd] font-mono">
+                      <p className="text-gray-300 text-sm font-medium">
                         {member.role}
                       </p>
                     </div>
 
-                    <div className="absolute top-4 right-4 w-8 h-8 bg-[#040406]/80 rounded-full flex items-center justify-center transform transition-all duration-300 opacity-0 group-hover:opacity-100">
-                      <FiArrowUpRight className="text-[#f18252]" />
-                    </div>
-                  </div>
+                    <motion.div
+                      className="absolute top-4 right-4 w-10 h-10 bg-gray-900/80 rounded-full flex items-center justify-center backdrop-blur-sm"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <ChevronRight className="h-5 w-5 text-primary" />
+                    </motion.div>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
