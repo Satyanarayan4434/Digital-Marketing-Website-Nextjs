@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import initDB from "@/lib/init-db";
 import { ToastProvider } from "@/components/ToastProvider";
+import { Analytics } from "@vercel/analytics/react"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <body className={roboto.className}>
           {/* Toast Provider added here */}
           <ToastProvider />
+          <Analytics/>
           
           <div className="flex min-h-screen flex-col">
             <Navbar />
