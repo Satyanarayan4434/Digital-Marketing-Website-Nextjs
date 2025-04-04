@@ -1,7 +1,7 @@
 import Hero from "@/components/home/Hero";
-import ServiceHighlights from "@/components/home/service-highlights";
 import InquiryForm from "@/components/home/InquiryForm";
 import PricingPlans from "@/components/home/PricingSection";
+import ServiceHighlights from "@/components/home/Service-highlights";
 
 export default function Home() {
   return (
