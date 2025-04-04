@@ -4,16 +4,17 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import initDB from "@/lib/init-db";
+import { ToastProvider } from "@/components/ToastProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"], // Choose required weights
-  variable: "--font-roboto", // Define a CSS variable for Tailwind
+  weight: ["100", "300", "400", "500", "700", "900"],
+  variable: "--font-roboto",
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // Choose required weights
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
 });
 
@@ -29,6 +30,9 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en scroll-smooth">
         <body className={roboto.className}>
+          {/* Toast Provider added here */}
+          <ToastProvider />
+          
           <div className="flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>

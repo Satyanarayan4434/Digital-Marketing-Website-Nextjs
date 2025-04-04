@@ -127,3 +127,7 @@
   }
 }
 
+/* globals.css */
+.sonner-toast {
+  z-index: 1001 !important; /* Clerk modals use 999 */
+}
