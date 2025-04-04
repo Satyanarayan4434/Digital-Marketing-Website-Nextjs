@@ -5,7 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import initDB from "@/lib/init-db";
 import { ToastProvider } from "@/components/ToastProvider";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           {/* Toast Provider added here */}
           <ToastProvider />
           <Analytics/>
+          <SpeedInsights/>
           
           <div className="flex min-h-screen flex-col">
             <Navbar />
