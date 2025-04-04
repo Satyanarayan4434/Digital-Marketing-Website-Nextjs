@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ContactPage = () => {
   const router = useRouter();
@@ -31,7 +32,8 @@ const ContactPage = () => {
           </p>
 
           {/* 3D Button */}
-          <motion.button
+         <Link href="/contact">
+         <motion.button
             onClick={() => router.push("/contact")}
             whileHover={{
               scale: 1.05,
@@ -47,7 +49,7 @@ const ContactPage = () => {
             </span>
             {/* Button shine effect */}
             <div className="absolute inset-0 opacity-0 hover:opacity-20 transition-opacity duration-300 bg-gradient-to-r from-[#f18252] to-[#b2b4bd]" />
-          </motion.button>
+          </motion.button></Link>
         </div>
       </div>
     </div>

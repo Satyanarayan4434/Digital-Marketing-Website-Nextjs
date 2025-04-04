@@ -12,22 +12,26 @@ export default function Hero() {
     {
       icon: MdOutlineLightbulb,
       title: "Brand Strategy Agency",
-      description: "Empowering businesses with strategic branding solutions, innovative design, and impactful marketing to elevate growth, engagement, and customer loyalty worldwide."
+      description: "Empowering businesses with strategic branding solutions, innovative design, and impactful marketing to elevate growth, engagement, and customer loyalty worldwide.",
+      link: "/services/brand-strategy"
     },
     {
       icon: FaPalette,
       title: "Creative Designing Agency",
-      description: "Transforming ideas into stunning visuals with innovative designs, branding solutions, and creative strategies that captivate, inspire, and engage audiences."
+      description: "Transforming ideas into stunning visuals with innovative designs, branding solutions, and creative strategies that captivate, inspire, and engage audiences.",
+      link: "/services/creative-designing"
     },
     {
       icon: BiTrendingUp,
       title: "Digital Marketing Services",
-      description: "Driving growth through targeted digital strategies, SEO, social media, and content marketing to boost brand visibility and maximize ROI."
+      description: "Driving growth through targeted digital strategies, SEO, social media, and content marketing to boost brand visibility and maximize ROI.",
+      link: "/services/digital-marketing"
     },
     {
       icon: AiOutlineCode,
       title: "Web Development Services",
-      description: "Building responsive, user-friendly websites with modern designs, seamless functionality, and optimized performance to enhance user experience and business growth."
+      description: "Building responsive, user-friendly websites with modern designs, seamless functionality, and optimized performance to enhance user experience and business growth.",
+      link: "/services/web-development"
     }
   ];
 
@@ -75,9 +79,9 @@ export default function Hero() {
 
           {/* Contact Button Section */}
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-6">
-            <button className="relative z-10 w-full md:w-auto px-8 md:px-16 py-2 bg-black rounded-full text-[#b2b4bd] border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400">
+            <Link href="/contact" className="relative z-10 w-full md:w-auto px-8 md:px-16 py-2 bg-black rounded-full text-[#b2b4bd] border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400">
               Call Us Now
-            </button>
+            </Link>
             <div className="text-sm md:text-base text-[#b2b4bd] font-semibold flex items-center justify-center gap-1">
               Explore our services <IoIosArrowForward />
             </div>
@@ -113,7 +117,7 @@ export default function Hero() {
                 {service.description}
               </p>
               <Link
-                href="/"
+                href={service.link}
                 className="text-sm md:text-base font-semibold text-[#f8f8fa] flex gap-1 items-center hover:text-orange-300 transition-colors"
               >
                 Learn More <IoIosArrowForward />

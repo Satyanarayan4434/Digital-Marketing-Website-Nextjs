@@ -3,55 +3,137 @@ import { Github, Youtube, Linkedin } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
+const serviceItems = [
+  {
+    title: "Brand Strategy Agency",
+    href: "/services/brand-strategy",
+  },
+  {
+    title: "Creative Designing Agency",
+    href: "/services/creative-designing",
+  },
+  {
+    title: "Digital Marketing Services",
+    href: "/services/digital-marketing",
+  },
+  {
+    title: "Web Development Services",
+    href: "/services/web-development",
+  },
+];
+
+const companyLinks = [
+  { name: "About Us", href: "/about" },
+  { name: "Contact Us", href: "/contact" },
+  { name: "Careers", href: "/careers" },
+];
+
+const resourceLinks = [
+  { name: "Blog", href: "/blog" },
+  { name: "FAQs", href: "/faqs" },
+  { name: "Support", href: "/support" },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-[url('/assets/Footer.png')] bg-cover bg-center bg-no-repeat w-full text-white border-t border-gray-800 py-5">
-      <div className="container w-11/12 mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between gap-8">
-          <div className="mb-8 md:mb-0 text-center md:text-left">
-            <Link href="/" className="block mb-4 md:mb-8">
-              <span>Quibit Digital Solution</span>
+    <footer className="bg-[url('/assets/Footer.png')] bg-cover bg-center bg-no-repeat w-full text-white border-t border-gray-800 py-8 sm:py-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-12">
+          {/* Logo & Social Section */}
+          <div className="mb-8 lg:mb-0 text-center lg:text-left lg:max-w-xs">
+            <Link href="/" className="inline-block mb-6 lg:mb-8">
+              <span className="text-2xl font-bold tracking-tight hover:text-primary transition-colors">
+                Qubit Digital Solution
+              </span>
             </Link>
 
-            <div className="flex justify-center md:justify-start gap-4 pt-4">
+            <div className="flex justify-center lg:justify-start gap-5 pt-4">
               {[FaXTwitter, FaDiscord, Youtube, Github, Linkedin].map((Icon, index) => (
-                <Link key={index} href="#" className="text-white hover:text-gray-300">
-                  <Icon size={20} />
+                <Link 
+                  key={index} 
+                  href="#" 
+                  className="text-white hover:text-primary transition-colors p-1.5"
+                  aria-label={`Social media link ${index + 1}`}
+                >
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </Link>
               ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-[14px] pb-3 text-center md:text-left">
-            {[
-              { title: "Services", links: ["SDK development & maintenance", "Cross-platform development"] },
-              { title: "Products", links: ["Globe.dev", "Zapp.run", "Docs.page"] },
-              { title: "Resources", links: ["Open source", "Blog"] },
-              { title: "Company", links: ["About us", "Careers"] },
-            ].map((section, index) => (
-              <div key={index}>
-                <h3 className="text-white font-medium text-base mb-4">{section.title}</h3>
-                <ul className="space-y-2 text-gray-400">
-                  {section.links.map((link, idx) => (
-                    <li key={idx}>
-                      <Link href="#" className="hover:text-white">{link}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Links Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full max-w-4xl">
+            {/* Services Column */}
+            <div className="text-center sm:text-left">
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Services</h3>
+              <ul className="space-y-3 text-gray-300">
+                {serviceItems.map((item, index) => (
+                  <li key={index}>
+                    <Link 
+                      href={item.href} 
+                      className="hover:text-white transition-colors block py-1.5 text-sm sm:text-base"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company Column */}
+            <div className="text-center sm:text-left">
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Company</h3>
+              <ul className="space-y-3 text-gray-300">
+                {companyLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link 
+                      href={link.href} 
+                      className="hover:text-white transition-colors block py-1.5 text-sm sm:text-base"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources Column */}
+            <div className="text-center sm:text-left">
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Resources</h3>
+              <ul className="space-y-3 text-gray-300">
+                {resourceLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link 
+                      href={link.href} 
+                      className="hover:text-white transition-colors block py-1.5 text-sm sm:text-base"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
-          <div className="text-base text-gray-500 mb-4 sm:mb-0">
-            Copyright © 2025 Invertase Limited. All rights reserved.
+        {/* Copyright & Legal Section */}
+        <div className="pt-8 mt-8 border-t border-gray-800 flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between items-center">
+          <div className="text-sm sm:text-base text-gray-400 text-center sm:text-left">
+            © {new Date().getFullYear()} Qubit Digital Solution. All rights reserved.
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 text-base text-gray-500">
-            {["Privacy Policy", "Cookie Policy", "Terms of Service"].map((policy, index) => (
-              <Link key={index} href="#" className="hover:text-white">
-                {policy}
+          
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm sm:text-base text-gray-400">
+            {[
+              { name: "Privacy Policy", href: "/privacy" },
+              { name: "Cookie Policy", href: "/cookies" },
+              { name: "Terms of Service", href: "/terms" },
+            ].map((policy, index) => (
+              <Link 
+                key={index} 
+                href={policy.href}
+                className="hover:text-white transition-colors px-2 py-1"
+              >
+                {policy.name}
               </Link>
             ))}
           </div>
