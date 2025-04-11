@@ -106,6 +106,7 @@ export default function BlogManagementPage() {
   const fetchBlogs = async () => {
     try {
       setIsLoading(true);
+      console.log(process.env.REACT_APP_API_BASE_URL)
       const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs`);
 
       if (!response.ok) {
