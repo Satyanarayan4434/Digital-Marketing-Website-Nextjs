@@ -44,7 +44,7 @@ export default function UsersListPage() {
     setError(null);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users?page=${page}&limit=${limit}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?page=${page}&limit=${limit}`);
 
       if (!response.ok) {
         const errorData = await response.json();

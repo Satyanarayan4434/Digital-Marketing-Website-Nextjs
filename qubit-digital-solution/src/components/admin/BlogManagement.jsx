@@ -54,7 +54,7 @@ export default function BlogManagement() {
   const fetchBlogs = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`);
       const data = await response.json();
       setPosts(data.blogs || []);
     } catch (error) {
@@ -102,7 +102,7 @@ export default function BlogManagement() {
         formDataToSend.append("image", selectedImage);
       }
 
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`, {
         method: "POST",
         body: formDataToSend,
       });
@@ -151,7 +151,7 @@ export default function BlogManagement() {
         formDataToSend.append("image", selectedImage);
       }
 
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs/${currentPost._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${currentPost._id}`, {
         method: "PUT",
         body: formDataToSend,
       });
@@ -182,7 +182,7 @@ export default function BlogManagement() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs/${currentPost._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${currentPost._id}`, {
         method: "DELETE",
       });
 

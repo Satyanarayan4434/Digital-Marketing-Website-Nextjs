@@ -66,7 +66,7 @@ export default function MessagesPage() {
   const fetchMessages = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/contact`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch messages");
@@ -139,7 +139,7 @@ export default function MessagesPage() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/contact/${currentMessage._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact/${currentMessage._id}`, {
         method: "DELETE",
       });
 
@@ -161,7 +161,7 @@ export default function MessagesPage() {
 
   const updateMessageStatus = async (id, status) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/contact/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
