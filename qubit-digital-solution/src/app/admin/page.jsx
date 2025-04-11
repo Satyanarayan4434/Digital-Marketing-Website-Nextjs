@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
   const fetchDashboardStats = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/dashboard");
+      const response = await fetch(`${process.env.FRONTEND_URL}/api/dashboard`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch dashboard data");

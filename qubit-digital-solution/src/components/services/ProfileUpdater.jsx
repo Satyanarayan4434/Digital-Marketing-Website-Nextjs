@@ -34,7 +34,7 @@ export default function ProfileUpdater() {
         if (user?.id) updateData.userId = user?.id;
 
         // Call the update API
-        const response = await fetch("/api/update-user-profile", {
+        const response = await fetch(`${process.env.FRONTEND_URL}/api/update-user-profile`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
