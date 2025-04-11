@@ -106,7 +106,7 @@ export default function BlogManagementPage() {
   const fetchBlogs = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.FRONTEND_URL}/api/blogs`);
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
@@ -169,7 +169,7 @@ export default function BlogManagementPage() {
         formDataToSend.append("image", selectedImage);
       }
 
-      const response = await fetch(`${process.env.FRONTEND_URL}/api/blogs`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs`, {
         method: "POST",
         body: formDataToSend,
       });
@@ -226,7 +226,7 @@ export default function BlogManagementPage() {
         formDataToSend.append("image", selectedImage);
       }
 
-      const response = await fetch(`${process.env.FRONTEND_URL}/api/blogs/${currentPost._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs/${currentPost._id}`, {
         method: "PUT",
         body: formDataToSend,
       });
@@ -257,7 +257,7 @@ export default function BlogManagementPage() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${process.env.FRONTEND_URL}/api/blogs/${currentPost._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs/${currentPost._id}`, {
         method: "DELETE",
       });
 

@@ -56,7 +56,7 @@ export default function BlogPage() {
   const fetchBlogs = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.FRONTEND_URL}/api/blogs`);
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/blogs`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
