@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Loader2, Search, Calendar, ArrowRight, Filter, ChevronLeft, ChevronRight } from "lucide-react";
+import { Loader2, Search, Calendar, ArrowRight, Filter } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -16,15 +16,12 @@ export default function BlogPage() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const blogsPerPage = 6; // You can adjust this value
 
   const router = useRouter();
 
   useEffect(() => {
-    fetchBlogs(currentPage);
-  }, [currentPage]); // Fetch blogs when the current page changes
+    fetchBlogs();
+  }, []);
 
   useEffect(() => {
     if (blogs.length > 0) {
@@ -35,7 +32,7 @@ export default function BlogPage() {
       ];
       setCategories(uniqueCategories);
 
-      // Filter blogs based on search term and category (applied to the current page's blogs)
+      // Filter blogs based on search term and category
       let filtered = blogs;
 
       if (searchTerm) {
@@ -56,12 +53,10 @@ export default function BlogPage() {
     }
   }, [blogs, searchTerm, selectedCategory]);
 
-  const fetchBlogs = async (page) => {
+  const fetchBlogs = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?page=${page}&limit=${blogsPerPage}`
-      );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
@@ -69,7 +64,7 @@ export default function BlogPage() {
 
       const data = await response.json();
       setBlogs(data.blogs || []);
-      setTotalPages(data.totalPages || 1);
+      setFilteredBlogs(data.blogs || []);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     } finally {
@@ -90,19 +85,7 @@ export default function BlogPage() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  // Animation variants (no changes needed here)
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -125,18 +108,20 @@ export default function BlogPage() {
     },
   };
 
-  // Blog Card Component (no changes needed here)
+  // Blog Card Component integrated directly
   const BlogCard = ({ blog }) => {
-    // ... (your existing BlogCard component)
     return (
       <div className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl">
-        {/* ... (rest of your BlogCard component) */}
+        {/* Image container with category badge */}
         <div className="relative">
+          {/* Category badge positioned absolute on the image */}
           <div className="absolute left-4 top-4 z-10">
             <span className="rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white shadow-md">
               {blog.category}
             </span>
           </div>
+
+          {/* Image with overlay gradient */}
           <div className="relative aspect-[16/9] overflow-hidden">
             <img
               src={
@@ -148,19 +133,28 @@ export default function BlogPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
           </div>
         </div>
+
+        {/* Content section */}
         <div className="p-5">
+          {/* Date with icon */}
           <div className="mb-3 flex items-center gap-1.5 text-sm text-gray-500">
             <Calendar className="h-4 w-4" />
             <span>{formatDate(blog.createdAt)}</span>
           </div>
+
+          {/* Title with hover effect */}
           <Link href={`/blog/${blog.slug}`}>
             <h3 className="mb-2 text-xl font-semibold line-clamp-2 transition-colors duration-300 group-hover:text-blue-600">
               {blog.title}
             </h3>
           </Link>
+
+          {/* Excerpt */}
           <p className="mb-4 text-sm text-gray-600 line-clamp-3">
             {blog.excerpt}
           </p>
+
+          {/* Read more link */}
           <Link
             href={`/blog/${blog.slug}`}
             className="inline-flex items-center text-sm font-medium text-blue-600 transition-colors hover:text-blue-700"
@@ -210,7 +204,7 @@ export default function BlogPage() {
             </Button>
             <span className="text-sm text-gray-500">
               {filteredBlogs.length}{" "}
-              {filteredBlogs.length === 1 ? "article" : "articles"} found on this page
+              {filteredBlogs.length === 1 ? "article" : "articles"} found
             </span>
           </div>
 
@@ -242,7 +236,7 @@ export default function BlogPage() {
             <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
             <p className="mt-4 text-gray-600">Loading articles...</p>
           </div>
-        ) : filteredBlogs.length === 0 && !isLoading ? (
+        ) : filteredBlogs.length === 0 ? (
           <div className="mt-16 rounded-xl bg-white p-8 text-center shadow-lg">
             <Search className="mx-auto h-12 w-12 text-gray-300" />
             <p className="mt-4 text-xl font-medium text-gray-700">
@@ -262,42 +256,18 @@ export default function BlogPage() {
             </Button>
           </div>
         ) : (
-          <>
-            <motion.div
-              className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {filteredBlogs.map((blog) => (
-                <motion.div key={blog._id} variants={itemVariants}>
-                  <BlogCard blog={blog} />
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {totalPages > 1 && (
-              <div className="mt-8 flex justify-center items-center gap-4">
-                <Button
-                  onClick={goToPreviousPage}
-                  disabled={currentPage === 1}
-                  variant="outline"
-                  size="sm"
-                >
-                  <ChevronLeft className="mr-2 h-4 w-4" /> Previous
-                </Button>
-                <span>{currentPage} of {totalPages}</span>
-                <Button
-                  onClick={goToNextPage}
-                  disabled={currentPage === totalPages}
-                  variant="outline"
-                  size="sm"
-                >
-                  Next <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            )}
-          </>
+          <motion.div
+            className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {filteredBlogs.map((blog) => (
+              <motion.div key={blog._id} variants={itemVariants}>
+                <BlogCard blog={blog} />
+              </motion.div>
+            ))}
+          </motion.div>
         )}
       </div>
     </div>
