@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
 import Blog from "@/models/Blog";
 import Contact from "@/models/Contact";
+import connectDB from "@/lib/db";
 
 export async function GET(request) {
   try {
@@ -18,6 +19,8 @@ export async function GET(request) {
       console.log("No authenticated user found");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    await connectDB();
     const client = await clerkClient();
     const userData = await client.users.getUserList();
     const totalUserCount = userData.totalCount;

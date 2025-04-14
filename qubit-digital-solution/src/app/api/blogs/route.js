@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 import Blog from "@/models/Blog";
+import connectDB from "@/lib/db";
 
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const limit = Number.parseInt(searchParams.get("limit")) || 0;
     const category = searchParams.get("category");
-
+    await connectDB();
     const query = { published: true };
 
     if (category && category !== "All") {
@@ -37,6 +38,8 @@ export async function POST(request) {
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    await connectDB();
 
     console.log("request", userId);
     const formData = await request.formData();
