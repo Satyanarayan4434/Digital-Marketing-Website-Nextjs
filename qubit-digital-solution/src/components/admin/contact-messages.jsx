@@ -34,7 +34,7 @@ export default function ContactMessages() {
   const fetchMessages = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`);
+      const response = await fetch(`/api/contact`);
       const data = await response.json();
       setMessages(data.messages || []);
     } catch (error) {
@@ -59,7 +59,7 @@ export default function ContactMessages() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact/${selectedMessage._id}`, {
+      const response = await fetch(`/api/contact/${selectedMessage._id}`, {
         method: "DELETE",
       });
 

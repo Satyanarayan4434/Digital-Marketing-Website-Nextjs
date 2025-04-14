@@ -29,7 +29,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
     console.log("Form submitted:", formState);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`, {
+      const response = await fetch(`/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formState),

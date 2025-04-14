@@ -56,7 +56,7 @@ export default function BlogPage() {
   const fetchBlogs = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/blogs');
+      const response = await fetch(`/api/blogs`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");

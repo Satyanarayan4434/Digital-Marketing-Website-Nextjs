@@ -107,7 +107,7 @@ export default function BlogManagementPage() {
     try {
       setIsLoading(true);
       
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`);
+      const response = await fetch(`/api/blogs`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
@@ -170,7 +170,7 @@ export default function BlogManagementPage() {
         formDataToSend.append("image", selectedImage);
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`, {
+      const response = await fetch(`/api/blogs`, {
         method: "POST",
         body: formDataToSend,
       });
@@ -227,7 +227,7 @@ export default function BlogManagementPage() {
         formDataToSend.append("image", selectedImage);
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${currentPost._id}`, {
+      const response = await fetch(`/api/blogs/${currentPost._id}`, {
         method: "PUT",
         body: formDataToSend,
       });
@@ -258,7 +258,7 @@ export default function BlogManagementPage() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${currentPost._id}`, {
+      const response = await fetch(`/api/blogs/${currentPost._id}`, {
         method: "DELETE",
       });
 

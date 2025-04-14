@@ -21,7 +21,7 @@ export default function BlogDetailPage() {
   const fetchBlogBySlug = async (slug) => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/slug/${slug}`);
+      const response = await fetch(`/api/blogs/slug/${slug}`);
 
       if (!response.ok) {
         throw new Error("Blog post not found");
