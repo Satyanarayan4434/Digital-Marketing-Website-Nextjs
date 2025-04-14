@@ -22,27 +22,16 @@ async function connectDB() {
     return cached.conn;
   }
 
-  // Inside connectDB function, before mongoose.connect
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
     };
-    // Log the options being used RIGHT BEFORE connecting
-    console.log("CONNECT_DB_OPTIONS:", JSON.stringify(opts));
-    // Log partial URI to confirm it's being read (mask password part)
-    console.log(
-      "CONNECT_DB_URI_START:",
-      MONGODB_URI
-        ? MONGODB_URI.substring(0, MONGODB_URI.indexOf(":") + 3) + "..."
-        : "URI_NOT_FOUND"
-    );
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).catch((err) => {
-      console.error("!!! MONGOOSE CONNECT ERROR:", err); // Log connection error directly
-      cached.promise = null;
-      throw err;
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose;
     });
   }
+
   try {
     cached.conn = await cached.promise;
   } catch (e) {
