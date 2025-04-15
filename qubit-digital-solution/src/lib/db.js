@@ -42,9 +42,9 @@ async function connectDB() {
   return cached.conn;
 }
 
-// Connect to the database immediately when this module is imported
-connectDB()
-  .then(() => console.log("MongoDB connected successfully"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+// // Connect to the database immediately when this module is imported
+// connectDB()
+//   .then(() => console.log("MongoDB connected successfully"))
+//   .catch((err) => console.error("MongoDB connection error:", err));
 
 export default connectDB;
