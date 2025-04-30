@@ -135,6 +135,7 @@ export default function Footer() {
               >
                 {policy.name}
               </Link>
+              
             ))}
           </div>
         </div>
