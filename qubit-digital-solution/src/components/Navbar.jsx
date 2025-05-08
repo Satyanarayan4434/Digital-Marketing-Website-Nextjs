@@ -83,7 +83,7 @@ export default function Navbar() {
             className="-m-1.5 p-1.5 transition-transform duration-300"
           >
             <Image
-              src="/Qubit-Digital-Solution-Logo.svg"
+              src="/logo.svg"
               alt="Qubit Digital Solution"
               width={200}
               height={200}
