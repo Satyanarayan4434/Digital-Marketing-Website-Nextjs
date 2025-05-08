@@ -84,7 +84,7 @@ export default function Navbar() {
           >
             <Image
               src="/logo.svg"
-              alt="Qubit Digital Solution"
+              alt="NeuPixelNet Digital"
               width={200}
               height={200}
             />
@@ -204,8 +204,8 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Image
-                    src="/Qubit-Digital-Solution-Logo.svg"
-                    alt="Qubit Digital Solution"
+                    src="/l.svg"
+                    alt="NeuPixelNet Digital"
                     width={150}
                     height={150}
                   />

@@ -174,7 +174,7 @@ export default function WebDevelopmentPage() {
               className=" max-w-3xl mx-auto"
             >
               <h1 className="text-2xl lg:text-4xl text-black font-semibold py-5">
-                When to choose Qubit Digital Solution
+                When to choose NeuPixelNet Digital
               </h1>
               <ul className="text-gray-800 font-medium flex flex-col  gap-4">
                 <li>Fast and Efficient Web Development</li>

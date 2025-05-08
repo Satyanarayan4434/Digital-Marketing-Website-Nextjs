@@ -38,7 +38,7 @@ export default function CreativeDesigningPage() {
                 <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                   Visual Innovation
                   <span className="block bg-gradient-to-r from-[#f18252] to-[#d46a38] bg-clip-text text-transparent mt-4">
-                    Qubit Creative Studio
+                     Creative Studio
                   </span>
                 </h1>
                 <p className="text-lg leading-relaxed mb-8">

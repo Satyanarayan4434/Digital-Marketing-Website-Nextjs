@@ -35,7 +35,7 @@ export default function AboutPage() {
               transition={{ delay: 0.4 }}
               className="text-lg md:text-xl max-w-3xl mb-8"
             >
-              At Qubit Digital Solution, we orchestrate digital success through
+              At NeuPixelNet Digital, we orchestrate digital success through
               innovative marketing strategies, cutting-edge technology, and
               data-driven insights. Partner with us to amplify your brand's
               digital presence.

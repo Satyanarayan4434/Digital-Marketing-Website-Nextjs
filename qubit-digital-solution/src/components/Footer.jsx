@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="mb-8 lg:mb-0 text-center lg:text-left lg:max-w-xs">
             <Link href="/" className="inline-block mb-6 lg:mb-8">
               <span className="text-2xl font-bold tracking-tight hover:text-primary transition-colors">
-                Qubit Digital Solution
+                NeuPixelNet Digital
               </span>
             </Link>
 
@@ -119,7 +119,7 @@ export default function Footer() {
         {/* Copyright & Legal Section */}
         <div className="pt-8 mt-8 border-t border-gray-800 flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between items-center">
           <div className="text-sm sm:text-base text-gray-400 text-center sm:text-left">
-            © {new Date().getFullYear()} Qubit Digital Solution. All rights reserved.
+            © {new Date().getFullYear()} NeuPixelNet Digital. All rights reserved.
           </div>
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm sm:text-base text-gray-400">

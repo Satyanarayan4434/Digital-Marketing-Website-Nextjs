@@ -52,7 +52,7 @@ export default function Hero() {
               </h1>
             </div>
             <p className="text-sm md:text-base text-[#b2b4bd] mt-4">
-              Empower your business with Qubit Digital Solution Pvt. Ltd. —
+              Empower your business with NeuPixelNet Digital Pvt. Ltd. —
               delivering result-driven digital marketing strategies, SEO, and
               social media solutions to boost visibility, engage audiences, and
               drive growth effectively.

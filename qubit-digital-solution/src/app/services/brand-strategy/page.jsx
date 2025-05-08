@@ -27,7 +27,7 @@ export default function BrandStrategyPage() {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Digital Brand Leadership
               <span className="block bg-gradient-to-r from-[#f18252] to-[#d46a38] bg-clip-text text-transparent mt-4">
-                Qubit Digital Solution
+                NeuPixelNet Digital
               </span>
             </h1>
 
@@ -47,7 +47,7 @@ export default function BrandStrategyPage() {
 
               <div className="space-y-6 text-lg">
                 <p className="text-[#b2b4bd] leading-relaxed">
-                  At Qubit Digital Solution, we architect market-dominant brand
+                  At NeuPixelNet Digital, we architect market-dominant brand
                   ecosystems through data-driven insights and innovative digital
                   strategies. Our full-spectrum approach combines analytical
                   rigor with creative excellence to position brands for

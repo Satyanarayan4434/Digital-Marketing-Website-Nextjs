@@ -4,7 +4,7 @@ import { Palette, BarChart3, Globe, Lightbulb, ArrowRight } from "lucide-react";
 import ProfileUpdater from "@/components/services/ProfileUpdater";
 
 export const metadata = {
-  title: "Services - Qubit Digital Solution",
+  title: "Services - NeuPixelNet Digital",
   description: "Explore our comprehensive digital marketing services",
 };
 
