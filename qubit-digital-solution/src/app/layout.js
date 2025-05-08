@@ -8,6 +8,7 @@ import { ToastProvider } from "@/components/ToastProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -23,7 +24,7 @@ const inter = Inter({
 await initDB();
 
 export const metadata = {
-  title: "Qubit Digital Solution - Digital Marketing Platform",
+  title: "NEUPIXELNET DIGITAL - Digital Marketing Platform",
   description: "Your partner for digital marketing success",
 };
 
