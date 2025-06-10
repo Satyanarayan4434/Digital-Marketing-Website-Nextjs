@@ -175,7 +175,7 @@ export default function Navbar() {
                 <Button
                   variant="ghost"
                   size="lg"
-                  className="transition-colors duration-200  hover:bg-gray-800 hover:text-white"
+                  className="transition-colors duration-200 hover:bg-gray-800 hover:text-white"
                 >
                   Sign In
                 </Button>
