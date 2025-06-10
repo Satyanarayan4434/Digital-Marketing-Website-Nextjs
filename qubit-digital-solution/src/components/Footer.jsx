@@ -126,7 +126,7 @@ export default function Footer() {
             {[
               { name: "Privacy Policy", href: "/privacy" },
               { name: "Cookie Policy", href: "/cookies" },
-              { name: "Terms of Service", href: "/terms" },
+              { name: "Terms of Service", href: "/termspage" },
             ].map((policy, index) => (
               <Link 
                 key={index} 
