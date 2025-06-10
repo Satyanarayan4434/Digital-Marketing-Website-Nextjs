@@ -137,7 +137,7 @@ export default function BlogPage() {
         {/* Content section */}
         <div className="p-5">
           {/* Date with icon */}
-          <div className="mb-3 flex items-center gap-1.5 text-sm text-gray-500">
+          <div className="mb-3 flex  items-center gap-1.5 text-sm text-gray-500">
             <Calendar className="h-4 w-4" />
             <span>{formatDate(blog.createdAt)}</span>
           </div>
