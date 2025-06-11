@@ -124,9 +124,9 @@ export default function Footer() {
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm sm:text-base text-gray-400">
             {[
-              { name: "Privacy Policy", href: "/privacy" },
-              { name: "Cookie Policy", href: "/cookies" },
-              { name: "Terms of Service", href: "/termspage" },
+              { name: "Privacy Policy", href: "/privacypolicy" },
+              { name: "Cookie Policy", href: "/cookiepolicy" },
+              { name: "Terms of Service", href: "/terms" },
             ].map((policy, index) => (
               <Link 
                 key={index} 
