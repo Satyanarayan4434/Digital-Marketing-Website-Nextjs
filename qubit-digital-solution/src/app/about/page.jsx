@@ -161,19 +161,19 @@ export default function AboutPage() {
                 color: "from-primary/20 to-primary/5",
               },
               {
-                name: "Priyanka Chatterjee",
+                name: "Tapas Patra",
                 role: "CTO",
                 image: "/assets/team-2.svg",
                 color: "from-blue-400/20 to-blue-400/5",
               },
               {
-                name: "Arjun Mehra",
+                name: "Mantu Patra",
                 role: "Creative Head",
                 image: "/assets/team-3.svg",
                 color: "from-purple-500/20 to-purple-500/5",
               },
               {
-                name: "Nandini Roy",
+                name: "Sagar Patra",
                 role: "Strategy Director",
                 image: "/assets/team-4.svg",
                 color: "from-green-400/20 to-green-400/5",
