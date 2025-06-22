@@ -48,29 +48,33 @@ export default function Footer() {
             </Link>
 
             <div className="flex justify-center lg:justify-start gap-5 pt-4">
-              {[FaXTwitter, FaDiscord, Youtube, Github, Linkedin].map((Icon, index) => (
-                <Link 
-                  key={index} 
-                  href="#" 
-                  className="text-white hover:text-primary transition-colors p-1.5"
-                  aria-label={`Social media link ${index + 1}`}
-                >
-                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                </Link>
-              ))}
+              {[FaXTwitter, FaDiscord, Youtube, Github, Linkedin].map(
+                (Icon, index) => (
+                  <Link
+                    key={index}
+                    href="#"
+                    className="text-white hover:text-primary transition-colors p-1.5"
+                    aria-label={`Social media link ${index + 1}`}
+                  >
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </Link>
+                )
+              )}
             </div>
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 w-full max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 w-full max-w-4xl">
             {/* Services Column */}
             <div className="text-center sm:text-left">
-              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Services</h3>
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">
+                Services
+              </h3>
               <ul className="space-y-3 text-gray-300">
                 {serviceItems.map((item, index) => (
                   <li key={index}>
-                    <Link 
-                      href={item.href} 
+                    <Link
+                      href={item.href}
                       className="hover:text-white transition-colors block py-1.5 text-sm sm:text-base"
                     >
                       {item.title}
@@ -82,12 +86,14 @@ export default function Footer() {
 
             {/* Company Column */}
             <div className="text-center sm:text-left">
-              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Company</h3>
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">
+                Company
+              </h3>
               <ul className="space-y-3 text-gray-300">
                 {companyLinks.map((link, index) => (
                   <li key={index}>
-                    <Link 
-                      href={link.href} 
+                    <Link
+                      href={link.href}
                       className="hover:text-white transition-colors block py-1.5 text-sm sm:text-base"
                     >
                       {link.name}
@@ -99,12 +105,14 @@ export default function Footer() {
 
             {/* Resources Column */}
             <div className="text-center sm:text-left">
-              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Resources</h3>
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">
+                Resources
+              </h3>
               <ul className="space-y-3 text-gray-300">
                 {resourceLinks.map((link, index) => (
                   <li key={index}>
-                    <Link 
-                      href={link.href} 
+                    <Link
+                      href={link.href}
                       className="hover:text-white transition-colors block py-1.5 text-sm sm:text-base"
                     >
                       {link.name}
@@ -114,41 +122,40 @@ export default function Footer() {
               </ul>
             </div>
 
-
+            {/* Address */}
             <div className="text-center sm:text-left">
-              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Resources</h3>
+              <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">
+                Resources
+              </h3>
               <ul className="space-y-3 text-gray-300">
-                
-                  <li >
-                    51/60, Dum Dum Road, <br /> Kolkata, West Bengal 700074, India
-                  </li>
-               
+                <li>
+                  51/60, Dum Dum Road, <br /> Kolkata, West Bengal 700074, India
+                </li>
               </ul>
             </div>
-
           </div>
         </div>
 
         {/* Copyright & Legal Section */}
         <div className="pt-8 mt-8 border-t border-gray-800 flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between items-center">
           <div className="text-sm sm:text-base text-gray-400 text-center sm:text-left">
-            © {new Date().getFullYear()} NeuPixelNet Digital. All rights reserved.
+            © {new Date().getFullYear()} NeuPixelNet Digital. All rights
+            reserved.
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm sm:text-base text-gray-400">
             {[
               { name: "Privacy Policy", href: "/privacypolicy" },
               { name: "Cookie Policy", href: "/cookiepolicy" },
               { name: "Terms of Service", href: "/terms" },
             ].map((policy, index) => (
-              <Link 
-                key={index} 
+              <Link
+                key={index}
                 href={policy.href}
                 className="hover:text-white transition-colors px-2 py-1"
               >
                 {policy.name}
               </Link>
-              
             ))}
           </div>
         </div>
