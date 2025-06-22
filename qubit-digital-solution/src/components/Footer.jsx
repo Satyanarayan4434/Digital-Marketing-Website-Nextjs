@@ -119,7 +119,7 @@ export default function Footer() {
               <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">Resources</h3>
               <ul className="space-y-3 text-gray-300">
                 
-                  <li key={index}>
+                  <li >
                     51/60, Dum Dum Road, <br /> Kolkata, West Bengal 700074, India
                   </li>
                
