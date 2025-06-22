@@ -135,7 +135,7 @@ export default function WhyChooseUsPage() {
                 
                 <div className="flex items-center gap-3">
                   <FiClock className="text-[#f18252] text-xl" />
-                  <span className="text-white font-medium">Established 2018</span>
+                  <span className="text-white font-medium">Established 2024</span>
                 </div>
               </motion.div>
               
