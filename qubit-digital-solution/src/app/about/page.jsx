@@ -175,7 +175,7 @@ export default function AboutPage() {
               {
                 name: "Sagar Patra",
                 role: "Strategy Director",
-                image: "/assets/team-4.svg",
+                image: "/assets/team-3.svg",
                 color: "from-green-400/20 to-green-400/5",
               },
             ].map((member, i) => (
