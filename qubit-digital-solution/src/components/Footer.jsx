@@ -125,7 +125,7 @@ export default function Footer() {
             {/* Address */}
             <div className="text-center sm:text-left">
               <h3 className="text-white font-semibold text-lg mb-4 lg:mb-6">
-                Resources
+                Address
               </h3>
               <ul className="space-y-3 text-gray-300">
                 <li>
