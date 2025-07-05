@@ -125,7 +125,7 @@ export default function ContactForm() {
             name="phone"
             value={formState.phone}
             onChange={handleChange}
-            placeholder="123-456-7891"
+            placeholder="+91-7908226306"
             required
             className="bg-black/50 border-gray-600 focus:border-blue-500"
           />
@@ -141,7 +141,7 @@ export default function ContactForm() {
             type="email"
             value={formState.email}
             onChange={handleChange}
-            placeholder="name@company.com"
+            placeholder="satyanarayansen@neupixelnetdigital.in"
             required
             className="bg-black/50 border-gray-600 focus:border-blue-500"
           />
