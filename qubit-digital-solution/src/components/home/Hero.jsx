@@ -79,7 +79,7 @@ export default function Hero() {
 
           {/* Contact Button Section */}
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-6">
-            <Link href="/contact" className="relative z-10 w-full md:w-auto px-8 md:px-16 py-2 bg-black rounded-full text-[#b2b4bd] border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400">
+            <Link href="tel:+91-7908226306" className="relative z-10 w-full md:w-auto px-8 md:px-16 py-2 bg-black rounded-full text-[#b2b4bd] border border-orange-300 transition-all cursor-pointer shadow-lg shadow-orange-300/20 hover:shadow-md hover:shadow-orange-400/30 hover:border-orange-400">
               Call Us Now
             </Link>
             <div className="text-sm md:text-base text-[#b2b4bd] font-semibold flex items-center justify-center gap-1">
